@@ -99,7 +99,3 @@ La jornada culminó con la tradicional canción "Al Maestro con Cariño", interp
 Los docentes de la **IE Atanasio Girardot** salieron de este evento renovados, motivados y con la certeza de que su labor es reconocida y valorada por toda la comunidad educativa.
 
 ---
-
-**Nota:** La Institución Educativa Atanasio Girardot agradece a todos los que hicieron posible esta celebración: estudiantes, padres de familia, personal administrativo y a cada uno de los maestros que día a día construyen sueños y transforman vidas.
-
-*"Educar no es dar carrera para vivir, sino templar el alma para las dificultades de la vida."* - Pitágoras
