@@ -5,7 +5,7 @@ layout: default
 <div class="hero-section">
   <div class="hero-content">
     <div class="animated-logo">
-      <img src="{{ site.institution.logo }}" alt="Logo" class="logo-img pulse">
+      <img src="{{ site.institution.logo | relative_url }}" alt="Logo" class="logo-img pulse">
     </div>
     <h1 class="animated-title">{{ site.title }}</h1>
     <div class="quote-container">
@@ -18,9 +18,9 @@ layout: default
       </blockquote>
       <cite id="quote-author">
         {% if site.data.frases and site.data.frases.size > 0 %}
-          {{ site.data.frases[0].autor }}
+          - {{ site.data.frases[0].autor }}
         {% else %}
-          Nelson Mandela
+          - Nelson Mandela
         {% endif %}
       </cite>
     </div>
@@ -42,7 +42,7 @@ layout: default
       <article class="news-card" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
         {% if noticia.image %}
         <div class="news-image">
-          <img src="{{ noticia.image }}" alt="{{ noticia.title }}">
+          <img src="{{ noticia.image | relative_url }}" alt="{{ noticia.title }}">
           <div class="news-overlay">
             <span class="news-category">{{ noticia.category }}</span>
           </div>
@@ -51,7 +51,7 @@ layout: default
         
         <div class="news-content">
           <h3 class="news-title">
-            <a href="{{ noticia.url }}">{{ noticia.title }}</a>
+            <a href="{{ noticia.url | relative_url }}">{{ noticia.title }}</a>
           </h3>
           <p class="news-excerpt">{{ noticia.excerpt | strip_html | truncate: 150 }}</p>
           <div class="news-meta">
@@ -59,7 +59,7 @@ layout: default
               <i class="icon-calendar">📅</i>
               {{ noticia.date | date: "%d/%m/%Y" }}
             </span>
-            <a href="{{ noticia.url }}" class="read-more">
+            <a href="{{ noticia.url | relative_url }}" class="read-more">
               Leer más <span class="arrow">→</span>
             </a>
           </div>
@@ -81,14 +81,8 @@ layout: default
       <div class="multimedia-card video-card" data-aos="zoom-in">
         <h3>Videos Recientes</h3>
         <div class="video-container">
-          {% if site.data.videos %}
-            {% if site.data.videos.size > 0 %}
-              <iframe src="{{ site.data.videos[0].url }}" frameborder="0" allowfullscreen></iframe>
-            {% else %}
-              <div style="padding: 40px; text-align: center; color: #666;">
-                <p>📹 Próximamente agregaremos videos</p>
-              </div>
-            {% endif %}
+          {% if site.data.videos and site.data.videos.size > 0 %}
+            <iframe src="{{ site.data.videos[0].url }}" frameborder="0" allowfullscreen></iframe>
           {% else %}
             <div style="padding: 40px; text-align: center; color: #666;">
               <p>📹 Próximamente agregaremos videos</p>
@@ -100,10 +94,10 @@ layout: default
       <div class="multimedia-card gallery-preview" data-aos="zoom-in" data-aos-delay="200">
         <h3>Galería de Fotos</h3>
         <div class="photo-grid">
-          {% if site.data.fotos %}
+          {% if site.data.fotos and site.data.fotos.size > 0 %}
             {% for foto in site.data.fotos limit:4 %}
               <div class="photo-item">
-                <img src="{{ foto.url }}" alt="{{ foto.title }}">
+                <img src="{{ foto.url | relative_url }}" alt="{{ foto.title }}">
               </div>
             {% endfor %}
           {% else %}
@@ -112,7 +106,7 @@ layout: default
             </div>
           {% endif %}
         </div>
-        <a href="/galeria/" class="btn-secondary">Ver todas las fotos</a>
+        <a href="{{ '/galeria/' | relative_url }}" class="btn-secondary">Ver todas las fotos</a>
       </div>
     </div>
   </div>
@@ -126,30 +120,38 @@ layout: default
     </h2>
     
     <div class="events-timeline">
-      {% for evento in site.eventos limit:4 %}
-      <div class="event-item" data-aos="fade-right">
-        <div class="event-date">
-          <span class="day">{{ evento.date | date: "%d" }}</span>
-          <span class="month">{{ evento.date | date: "%b" }}</span>
+      {% if site.eventos and site.eventos.size > 0 %}
+        {% for evento in site.eventos limit:4 %}
+        <div class="event-item" data-aos="fade-right">
+          <div class="event-date">
+            <span class="day">{{ evento.date | date: "%d" }}</span>
+            <span class="month">{{ evento.date | date: "%b" }}</span>
+          </div>
+          <div class="event-content">
+            <h3>{{ evento.title }}</h3>
+            <p>{{ evento.description }}</p>
+            <a href="{{ evento.url | relative_url }}" class="event-link">Ver detalles →</a>
+          </div>
         </div>
-        <div class="event-content">
-          <h3>{{ evento.title }}</h3>
-          <p>{{ evento.description }}</p>
-          <a href="{{ evento.url }}" class="event-link">Ver detalles →</a>
+        {% endfor %}
+      {% else %}
+        <div style="padding: 40px; text-align: center; color: #666;">
+          <p>📅 No hay eventos programados por el momento</p>
         </div>
-      </div>
-      {% endfor %}
+      {% endif %}
     </div>
   </div>
 </section>
 
 <!-- Control de audio del himno -->
+{% if site.institution.anthem %}
 <div id="audio-player" class="audio-player">
   <audio id="himno" loop>
-    <source src="{{ site.institution.anthem }}" type="audio/mpeg">
+    <source src="{{ site.institution.anthem | relative_url }}" type="audio/mpeg">
   </audio>
   <button id="toggle-audio" class="audio-toggle" aria-label="Reproducir/Pausar Himno">
     <span class="play-icon">🔊</span>
     <span class="pause-icon" style="display:none;">🔇</span>
   </button>
 </div>
+{% endif %}

@@ -1,5 +1,10 @@
   title: "Mi Video"
-  url: "https://www.youtube.com/watch?v=OwmHSmIkB3E"
+  url: "https://www.youtube.com/embed/dQw4w9WgXcQ"
   description: "inversiones en los proyectos de girardota"
   date: 2025-09-30
+
+  title: "Video de Ejemplo"
+  url: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  description: "Descripción"
+  date: 2025-09-29
   
