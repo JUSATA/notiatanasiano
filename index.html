@@ -145,13 +145,24 @@ layout: default
 
 <!-- Control de audio del himno -->
 {% if site.institution.anthem %}
-<div id="audio-player" class="audio-player">
-<audio id="himno" loop autoplay muted>
-  <source src="{{ site.institution.anthem | relative_url }}" type="audio/mpeg">
-</audio>
-  <button id="toggle-audio" class="audio-toggle" aria-label="Reproducir/Pausar Himno">
+<div id="audio-player" class="audio-player" aria-live="polite">
+  <audio id="himno" loop playsinline preload="auto">
+    <source src="{{ site.institution.anthem | relative_url }}" type="audio/mpeg">
+  </audio>
+
+  <!-- Botón visible que también sirve como fallback si autoplay falla -->
+  <button id="toggle-audio" class="audio-toggle" aria-label="Reproducir/Pausar Himno" style="display:none;">
     <span class="play-icon">🔊</span>
     <span class="pause-icon" style="display:none;">🔇</span>
   </button>
+
+  <!-- Overlay de acción obligatoria cuando autoplay es bloqueado -->
+  <div id="audio-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:99999;
+       display:flex; align-items:center; justify-content:center;">
+    <div style="background:#fff; padding:20px; border-radius:8px; text-align:center; max-width:90%; box-shadow:0 10px 30px rgba(0,0,0,0.3);">
+      <p style="margin:0 0 12px;">Presiona para reproducir el himno de la institución</p>
+      <button id="overlay-play" style="padding:10px 16px; font-size:16px; cursor:pointer;">▶ Reproducir Himno</button>
+    </div>
+  </div>
 </div>
 {% endif %}

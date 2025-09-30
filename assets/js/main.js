@@ -50,27 +50,69 @@
   // ==========================================
   // CONTROL DE AUDIO DEL HIMNO
   // ==========================================
-  const audioPlayer = document.getElementById('himno');
-  const audioToggle = document.getElementById('toggle-audio');
-  const playIcon = document.querySelector('.play-icon');
-  const pauseIcon = document.querySelector('.pause-icon');
-  audioPlayer.muted = false;
+const audioPlayer = document.getElementById('himno');
+const audioToggle = document.getElementById('toggle-audio');
+const playIcon = document.querySelector('.play-icon');
+const pauseIcon = document.querySelector('.pause-icon');
+const audioOverlay = document.getElementById('audio-overlay');
+const overlayPlay = document.getElementById('overlay-play');
 
-  if (audioToggle && audioPlayer) {
+function updateToggleUI(isPlaying) {
+  if (!audioToggle) return;
+  if (isPlaying) {
+    audioToggle.classList.add('playing');
+    if (playIcon) playIcon.style.display = 'none';
+    if (pauseIcon) pauseIcon.style.display = 'inline';
+    audioToggle.style.display = 'inline-block';
+  } else {
+    audioToggle.classList.remove('playing');
+    if (playIcon) playIcon.style.display = 'inline';
+    if (pauseIcon) pauseIcon.style.display = 'none';
+    audioToggle.style.display = 'inline-block';
+  }
+}
+if (audioPlayer) {
+  // Forzar volumen si quieres; por defecto 1.0
+  audioPlayer.volume = 1.0;
+
+  // Intentamos reproducir (puede fallar por política de autoplay)
+  audioPlayer.play().then(() => {
+    updateToggleUI(true);
+    console.log('Himno: reproducido automáticamente.');
+  }).catch((err) => {
+    console.warn('Autoplay bloqueado por el navegador:', err);
+    // Mostrar overlay para pedir interacción del usuario
+    if (audioOverlay) audioOverlay.style.display = 'flex';
+    if (audioToggle) audioToggle.style.display = 'none'; // esconder toggle hasta que el usuario interactúe
+  });
+
+  // Toggle botón (si el autoplay sí se permitió o después de interacción)
+  if (audioToggle) {
     audioToggle.addEventListener('click', () => {
       if (audioPlayer.paused) {
-        audioPlayer.play();
-        if (playIcon) playIcon.style.display = 'none';
-        if (pauseIcon) pauseIcon.style.display = 'inline';
-        audioToggle.classList.add('playing');
+        audioPlayer.play().then(() => updateToggleUI(true)).catch(() => {
+          // si falla, mostrar overlay
+          if (audioOverlay) audioOverlay.style.display = 'flex';
+        });
       } else {
         audioPlayer.pause();
-        if (playIcon) playIcon.style.display = 'inline';
-        if (pauseIcon) pauseIcon.style.display = 'none';
-        audioToggle.classList.remove('playing');
+        updateToggleUI(false);
       }
     });
   }
+
+  // Overlay play (gesto del usuario)
+  if (overlayPlay) {
+    overlayPlay.addEventListener('click', () => {
+      audioPlayer.play().then(() => {
+        if (audioOverlay) audioOverlay.style.display = 'none';
+        updateToggleUI(true);
+      }).catch(err => {
+        console.error('No se pudo reproducir tras interacción:', err);
+      });
+    });
+  }
+}
 
   // ==========================================
   // FRASES DIARIAS
