@@ -32,7 +32,7 @@ layout: default
       <article class="news-card" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
         {% if noticia.image %}
         <div class="news-image">
-          <img src="{{ noticia.image }}" alt="{{ noticia.title }}">
+          <img src="{{ noticia.image  | relative_url}}" alt="{{ noticia.title }}">
           <div class="news-overlay">
             <span class="news-category">{{ noticia.category }}</span>
           </div>
@@ -41,7 +41,7 @@ layout: default
         
         <div class="news-content">
           <h3 class="news-title">
-            <a href="{{ noticia.url }}">{{ noticia.title }}</a>
+            <a href="{{ noticia.url | relative_url }}">{{ noticia.title }}</a>
           </h3>
           <p class="news-excerpt">{{ noticia.excerpt | strip_html | truncate: 150 }}</p>
           <div class="news-meta">
@@ -49,7 +49,7 @@ layout: default
               <i class="icon-calendar">📅</i>
               {{ noticia.date | date: "%d/%m/%Y" }}
             </span>
-            <a href="{{ noticia.url }}" class="read-more">
+            <a href="{{ noticia.url | relative_url }}" class="read-more">
               Leer más <span class="arrow">→</span>
             </a>
           </div>
