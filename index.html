@@ -30,34 +30,53 @@ layout: default
     
     <div class="news-grid">
       {% assign destacados = site.noticias | where: "destacado", true | sort: "date" | reverse %}
-      {% for noticia in destacados limit:6 %}
-      <article class="news-card" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
-        {% if noticia.image %}
-        <div class="news-image">
-          <img src="{{ noticia.image | relative_url }}" alt="{{ noticia.title }}">
-          <div class="news-overlay">
-            <span class="news-category">{{ noticia.category }}</span>
-          </div>
-        </div>
-        {% endif %}
-        
-        <div class="news-content">
-          <h3 class="news-title">
-            <a href="{{ noticia.url | relative_url }}">{{ noticia.title }}</a>
-          </h3>
-          <p class="news-excerpt">{{ noticia.excerpt | strip_html | truncate: 150 }}</p>
-          <div class="news-meta">
-            <span class="news-date">
-              <i class="icon-calendar">📅</i>
-              {{ noticia.date | date: "%d/%m/%Y" }}
-            </span>
-            <a href="{{ noticia.url | relative_url }}" class="read-more">
-              Leer más <span class="arrow">→</span>
-            </a>
-          </div>
-        </div>
-      </article>
-      {% endfor %}
+{% for noticia in destacados limit:6 %}
+<article class="news-card" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
+  {% if noticia.image %}
+  <div class="news-image">
+    <img src="{{ noticia.image | relative_url }}" alt="{{ noticia.title }}">
+    <div class="news-overlay">
+      <span class="news-category">{{ noticia.category }}</span>
+    </div>
+  </div>
+  {% endif %}
+  
+  <div class="news-content">
+    <h3 class="news-title">
+      <a href="{{ noticia.url | relative_url }}">{{ noticia.title }}</a>
+    </h3>
+    <p class="news-excerpt">{{ noticia.excerpt | strip_html | truncate: 150 }}</p>
+    <div class="news-meta">
+      <span class="news-date">
+        <i class="icon-calendar">📅</i>
+        {{ noticia.date | date: "%d/%m/%Y" }}
+      </span>
+
+      <!-- BOTÓN que abre el modal (no navega) -->
+      <button class="read-more-btn" data-index="{{ forloop.index0 }}" aria-haspopup="dialog" aria-controls="news-modal">
+        Leer más <span class="arrow">→</span>
+      </button>
+    </div>
+  </div>
+</article>
+
+<!-- CONTENIDO COMPLETO OCULTO (pre-renderizado) -->
+<div class="noticia-full-data" id="noticia-full-{{ forloop.index0 }}" style="display:none;">
+  <h2 class="hidden-title">{{ noticia.title }}</h2>
+  <div class="hidden-meta">
+    <span class="hidden-date">{{ noticia.date | date: "%d de %B de %Y" }}</span>
+    {% if noticia.author %}<span class="hidden-author"> — {{ noticia.author }}</span>{% endif %}
+  </div>
+  {% if noticia.image %}
+  <div class="hidden-image">
+    <img src="{{ noticia.image | relative_url }}" alt="{{ noticia.title }}">
+  </div>
+  {% endif %}
+  <div class="hidden-content">
+    {{ noticia.content | markdownify }}
+  </div>
+</div>
+{% endfor %}
     </div>
   </div>
 </section>
@@ -137,4 +156,92 @@ layout: default
     <span class="pause-icon" style="display:none;">🔇</span>
   </button>
 </div>
+
+
+<div id="news-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" style="display:none;">
+  <div class="modal-backdrop" data-close="true"></div>
+  <div class="modal-body" role="document" tabindex="-1">
+    <button class="modal-close" aria-label="Cerrar">✕</button>
+    <article class="modal-article">
+      <header>
+        <h1 id="modal-title"></h1>
+        <p id="modal-meta" class="modal-meta"></p>
+        <div id="modal-image" class="modal-image"></div>
+      </header>
+      <section id="modal-content" class="modal-content"></section>
+    </article>
+  </div>
+</div>
+
+<style>
+/* Estilos básicos del modal — ajusta según tu tema */
+.modal { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; }
+.modal-backdrop { position:absolute; inset:0; background: rgba(0,0,0,0.6); }
+.modal-body { position: relative; max-width: 900px; width: 95%; max-height: 90vh; overflow:auto; background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); z-index: 2; }
+.modal-close { position: absolute; right: 12px; top: 12px; border: none; background: transparent; font-size: 20px; cursor: pointer; }
+.modal-image img { width:100%; border-radius: 10px; margin: 12px 0; object-fit: cover; max-height: 320px; }
+.modal-meta { color:#666; font-size:0.95rem; margin-bottom:8px; }
+.modal-content { color:#333; line-height:1.8; font-size:1rem; }
+@media (max-width: 640px) { .modal-body { padding: 16px; } .modal-image img { max-height:200px } }
+</style>
+
+<script>
+(function(){
+  const modal = document.getElementById('news-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalMeta = document.getElementById('modal-meta');
+  const modalImage = document.getElementById('modal-image');
+  const modalContent = document.getElementById('modal-content');
+  const closeBtn = modal.querySelector('.modal-close');
+  const backdrop = modal.querySelector('.modal-backdrop');
+
+  function openModal(index) {
+    const data = document.getElementById('noticia-full-' + index);
+    if(!data) return;
+    // POBLAR modal
+    modalTitle.innerHTML = data.querySelector('.hidden-title')?.innerHTML || '';
+    modalMeta.innerHTML = data.querySelector('.hidden-meta')?.innerHTML || '';
+    const imgNode = data.querySelector('.hidden-image');
+    modalImage.innerHTML = imgNode ? imgNode.innerHTML : '';
+    modalContent.innerHTML = data.querySelector('.hidden-content')?.innerHTML || '';
+    // Mostrar modal
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+    // focus trap (simple)
+    modal.querySelector('.modal-body').focus();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    modalTitle.innerHTML = '';
+    modalMeta.innerHTML = '';
+    modalImage.innerHTML = '';
+    modalContent.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  // Delegación: botones "Leer más"
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest('.read-more-btn');
+    if(btn){
+      e.preventDefault();
+      const idx = btn.getAttribute('data-index');
+      openModal(idx);
+    }
+    if(e.target.closest('[data-close="true"]') || e.target.closest('.modal-close')) {
+      closeModal();
+    }
+  });
+
+  // cerrar con ESC
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && modal.style.display === 'flex') closeModal();
+  });
+
+  // cerrar si se hace click fuera del modal-body (backdrop)
+  backdrop.addEventListener('click', closeModal);
+})();
+</script>
 EOF
