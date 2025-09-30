@@ -146,9 +146,13 @@ layout: default
 <!-- Control de audio del himno -->
 {% if site.institution.anthem %}
 <div id="audio-player" class="audio-player" aria-live="polite">
-  <audio id="himno" loop playsinline preload="auto">
+  <audio id="himno"  loop playsinline preload="auto" muted>
     <source src="{{ site.institution.anthem | relative_url }}" type="audio/mpeg">
   </audio>
+  <script>
+  const a = document.getElementById('himno');
+  a.play().catch(()=>{/* autoplay bloqueado o ya muted */});
+</script>
 
   <!-- Botón visible que también sirve como fallback si autoplay falla -->
   <button id="toggle-audio" class="audio-toggle" aria-label="Reproducir/Pausar Himno" style="display:none;">
