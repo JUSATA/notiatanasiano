@@ -1,4 +1,4 @@
-// Inicializar AOS (Animate On Scroll)
+
 AOS.init({
   duration: 800,
   offset: 100,
@@ -6,7 +6,6 @@ AOS.init({
   easing: 'ease-in-out'
 });
 
-// Menu Toggle para móviles
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -14,7 +13,7 @@ if (navToggle) {
   navToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
     
-    // Animación del icono hamburguesa
+
     const spans = navToggle.querySelectorAll('span');
     spans[0].style.transform = navMenu.classList.contains('active') 
       ? 'rotate(45deg) translate(5px, 5px)' 
@@ -26,7 +25,7 @@ if (navToggle) {
   });
 }
 
-// Cerrar menú al hacer click en un enlace
+
 const navLinks = document.querySelectorAll('.nav-link');
 navLinks.forEach(link => {
   link.addEventListener('click', () => {
@@ -36,7 +35,6 @@ navLinks.forEach(link => {
   });
 });
 
-// Control del reproductor de audio (Himno)
 const audioPlayer = document.getElementById('himno');
 const audioToggle = document.getElementById('toggle-audio');
 const playIcon = document.querySelector('.play-icon');
@@ -58,7 +56,6 @@ if (audioToggle && audioPlayer) {
   });
 }
 
-// Cambiar frase del día dinámicamente
 const frases = [
   {
     texto: "La educación es el arma más poderosa que puedes usar para cambiar el mundo.",
@@ -87,7 +84,6 @@ function cambiarFraseDiaria() {
   const authorElement = document.getElementById('quote-author');
   
   if (quoteElement && authorElement) {
-    // Obtener el día del año para tener una frase diferente cada día
     const now = new Date();
     const start = new Date(now.getFullYear(), 0, 0);
     const diff = now - start;
@@ -102,10 +98,8 @@ function cambiarFraseDiaria() {
   }
 }
 
-// Cambiar frase al cargar la página
 cambiarFraseDiaria();
 
-// Scroll suave para enlaces internos
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -119,7 +113,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Efecto parallax en el hero
 let lastScrollTop = 0;
 window.addEventListener('scroll', () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -133,7 +126,6 @@ window.addEventListener('scroll', () => {
   lastScrollTop = scrollTop;
 });
 
-// Animación de conteo para estadísticas (si existen)
 function animateCounter(element, target, duration = 2000) {
   let current = 0;
   const increment = target / (duration / 16);
