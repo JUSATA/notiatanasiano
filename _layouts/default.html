@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   
-  <link rel="icon" href="{{ site.institution.logo }}" type="image/png">
+  <link rel="icon" href="{{ site.institution.logo | relative_url }}" type="image/png">
 </head>
 <body>
   
@@ -27,7 +27,7 @@
     <nav class="navbar">
       <div class="container">
         <div class="nav-brand">
-          <img src="{{ site.institution.logo }}" alt="{{ site.institution.name }}" class="nav-logo">
+          <img src="{{ site.institution.logo | relative_url }}" alt="{{ site.institution.name }}" class="nav-logo">
           <div class="brand-text">
             <h1>{{ site.title }}</h1>
             <p>{{ site.institution.location }}</p>
@@ -70,7 +70,7 @@
     
     <!-- Bandera de Girardota -->
     <div class="flag-banner">
-      <img src="/assets/images/bandera-girardota.png" alt="Bandera de Girardota" class="flag-img">
+      <img src="{{ site.institution.flag | relative_url }}" alt="Bandera de Girardota" class="flag-img">
     </div>
   </header>
 
@@ -82,7 +82,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-section">
-          <img src="{{ site.institution.logo }}" alt="{{ site.institution.name }}" class="footer-logo">
+          <img src="{{ site.institution.logo | relative_url }}" alt="{{ site.institution.name }}" class="footer-logo">
           <h3>{{ site.institution.name }}</h3>
           <p>{{ site.institution.location }}</p>
         </div>
