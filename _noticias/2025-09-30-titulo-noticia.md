@@ -8,8 +8,7 @@ image: "/assets/images/noticias/imagen.jpg"
 video: "https://www.youtube.com/embed/VIDEO_ID"
 excerpt: "Breve descripción de la noticia"
 galeria:
-  - "/assets/images/galeria/foto1.jpg"
-  - "/assets/images/galeria/foto2.jpg"
+  - "/assets/images/noticias/maestros.jpg"
 ---
 
 ## Tu contenido aquí
