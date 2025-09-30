@@ -2,31 +2,31 @@
 # Agrega tus fotos en assets/images/galeria/
 
 - title: "Estudiantes en clase de ciencias"
-  url: "notiatanasiano/assets/images/galeria/ciencias.png"
+  url: "assets/images/galeria/ciencias.png"
   category: "Académico"
   date: 2025-09-15
 
 - title: "Equipo de fútbol institucional"
-  url: "notiatanasiano/assets/images/galeria/futbol.jpg"
+  url: "assets/images/galeria/futbol.jpg"
   category: "Deportes"
   date: 2025-09-10
 
 - title: "Laboratorio de informática"
-  url: "notiatanasiano/assets/images/galeria/computador.avif"
+  url: "assets/images/galeria/computador.avif"
   category: "Tecnología"
   date: 2025-08-20
 
 - title: "Biblioteca institucional"
-  url: "notiatanasiano/assets/images/galeria/biblioteca.jpg"
+  url: "assets/images/galeria/biblioteca.jpg"
   category: "Instalaciones"
   date: 2025-08-15
 
 - title: "Acto cívico"
-  url: "notiatanasiano/assets/images/galeria/civico.jpg"
+  url: "assets/images/galeria/civico.jpg"
   category: "Eventos"
   date: 2025-09-28
 
 - title: "Huerta escolar"
-  url: "notiatanasiano/assets/images/galeria/huerta.jpg"
+  url: "assets/images/galeria/huerta.jpg"
   category: "Proyectos"
   date: 2025-08-30
