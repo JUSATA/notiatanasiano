@@ -1,12 +1,12 @@
-
-title: "Notiatanasiano"  # Tu título
-url: "https://jusata.github.io"  # Tu URL
+title: "Notiatanasiano"
+url: "https://jusata.github.io"
 baseurl: "/notiatanasiano"
 
 institution:
   name: "Institución Educativa Atanasio Girardot"
   location: "Girardota, Antioquia"
   logo: "/assets/images/logo.png"
+  flag: "/assets/images/bandera-girardota.png"  # ← AGREGADO
   anthem: "/assets/audio/himno.mp3"
 
 social:
@@ -14,7 +14,8 @@ social:
   youtube: "https://www.youtube.com/@juliansancheztaborda5203"
   instagram: "https://www.instagram.com/ie.atanasio"
 
-  theme: minima
+theme: minima  # ← CORREGIDO (estaba mal indentado)
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
@@ -49,9 +50,16 @@ defaults:
 paginate: 9
 paginate_path: "/noticias/page:num/"
 
+# Zona horaria
+timezone: America/Bogota
+
+# Markdown
+markdown: kramdown
+
 # Exclude
 exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
-
+  - node_modules
+  - vendor
