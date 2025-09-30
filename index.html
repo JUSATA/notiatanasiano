@@ -83,7 +83,7 @@ layout: default
         <div class="video-container">
           {% if site.data.videos %}
             {% if site.data.videos.size > 0 %}
-              <iframe src="{{ site.data.videos[0].url }}" frameborder="0" allowfullscreen></iframe>
+              <iframe src="{{ site.data.videos[0].url  | relative_url}}" frameborder="0" allowfullscreen></iframe>
             {% else %}
               <div style="padding: 40px; text-align: center; color: #666;">
                 <p>📹 Próximamente agregaremos videos</p>
@@ -100,10 +100,10 @@ layout: default
       <div class="multimedia-card gallery-preview" data-aos="zoom-in" data-aos-delay="200">
         <h3>Galería de Fotos</h3>
         <div class="photo-grid">
-          {% if site.data.fotos %}
+          {% if site.data.fotos | relative_url %}
             {% for foto in site.data.fotos limit:4 %}
               <div class="photo-item">
-                <img src="{{ foto.url }}" alt="{{ foto.title }}">
+                <img src="{{ foto.url | relative_url }}" alt="{{ foto.title }}">
               </div>
             {% endfor %}
           {% else %}
