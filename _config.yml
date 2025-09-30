@@ -1,5 +1,7 @@
+
 title: "Notiatanasiano"  # Tu título
 url: "https://jusata.github.io"  # Tu URL
+baseurl: "/notiatanasiano"
 
 institution:
   name: "Institución Educativa Atanasio Girardot"
@@ -11,3 +13,45 @@ social:
   facebook: "https://facebook.com/profile.php?id=100008360917770"
   youtube: "https://www.youtube.com/@juliansancheztaborda5203"
   instagram: "https://www.instagram.com/ie.atanasio"
+
+  theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Colecciones
+collections:
+  noticias:
+    output: true
+    permalink: /noticias/:title/
+  eventos:
+    output: true
+    permalink: /eventos/:title/
+  galeria:
+    output: true
+    permalink: /galeria/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "noticias"
+    values:
+      layout: "noticia"
+  - scope:
+      path: ""
+      type: "eventos"
+    values:
+      layout: "evento"
+
+# Paginación
+paginate: 9
+paginate_path: "/noticias/page:num/"
+
+# Exclude
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+
