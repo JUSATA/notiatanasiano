@@ -5,23 +5,22 @@ baseurl: "/notiatanasiano"
 institution:
   name: "Institución Educativa Atanasio Girardot"
   location: "Girardota, Antioquia"
-  logo: "/notiatanasiano/assets/images/logo.png"
-  flag: "/notiatanasiano/assets/images/bandera-girardota.png"  # ← AGREGADO
-  anthem: "/notiatanasiano/assets/audio/himno.mp3"
+  logo: "/assets/images/logo.png"
+  flag: "/assets/images/bandera-girardota.png"
+  anthem: "/assets/audio/himno.mp3"
 
 social:
   facebook: "https://facebook.com/profile.php?id=100008360917770"
   youtube: "https://www.youtube.com/@juliansancheztaborda5203"
   instagram: "https://www.instagram.com/ie.atanasio"
 
-theme: minima  # ← CORREGIDO (estaba mal indentado)
+theme: minima
 
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
 
-# Colecciones
 collections:
   noticias:
     output: true
@@ -33,7 +32,6 @@ collections:
     output: true
     permalink: /galeria/:title/
 
-# Defaults
 defaults:
   - scope:
       path: ""
@@ -46,22 +44,17 @@ defaults:
     values:
       layout: "evento"
 
-# Paginación
 paginate: 9
 paginate_path: "/noticias/page:num/"
 
-# Zona horaria
 timezone: America/Bogota
 
-# Markdown
 markdown: kramdown
 
-# Exclude
 exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
   - node_modules
   - vendor
-
-  
+EOF
