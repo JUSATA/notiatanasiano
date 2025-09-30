@@ -1,0 +1,461 @@
+---
+layout: default
+title: "Galería Multimedia"
+---
+
+<section class="galeria-page">
+  <div class="container">
+    <header class="page-header" data-aos="fade-down">
+      <h1 class="page-title">
+        <span class="icon">📸</span>
+        Galería Multimedia
+      </h1>
+      <p class="page-subtitle">Momentos memorables de nuestra comunidad educativa</p>
+    </header>
+    
+    <!-- Filtros de Categoría -->
+    <div class="galeria-filters" data-aos="fade-up">
+      <button class="filter-btn active" data-filter="all">
+        🎯 Todas
+      </button>
+      <button class="filter-btn" data-filter="Académico">
+        📚 Académico
+      </button>
+      <button class="filter-btn" data-filter="Deportes">
+        ⚽ Deportes
+      </button>
+      <button class="filter-btn" data-filter="Cultural">
+        🎭 Cultural
+      </button>
+      <button class="filter-btn" data-filter="Eventos">
+        🎉 Eventos
+      </button>
+      <button class="filter-btn" data-filter="Tecnología">
+        💻 Tecnología
+      </button>
+      <button class="filter-btn" data-filter="Proyectos">
+        🌱 Proyectos
+      </button>
+    </div>
+    
+    <!-- Grid de Fotos -->
+    <div class="galeria-grid-main">
+      {% for foto in site.data.fotos %}
+      <div class="galeria-item-main" data-category="{{ foto.category }}" data-aos="zoom-in" data-aos-delay="{{ forloop.index | times: 50 }}">
+        <div class="galeria-image-wrapper">
+          <img src="{{ foto.url }}" alt="{{ foto.title }}" loading="lazy">
+          <div class="galeria-overlay">
+            <div class="galeria-info">
+              <h3>{{ foto.title }}</h3>
+              <span class="galeria-category">{{ foto.category }}</span>
+              <span class="galeria-date">{{ foto.date | date: "%d/%m/%Y" }}</span>
+            </div>
+            <button class="galeria-expand" aria-label="Ver imagen completa">
+              🔍 Ver
+            </button>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <!-- Sección de Videos -->
+    <div class="videos-section" data-aos="fade-up">
+      <h2 class="section-title">
+        <span class="icon">🎥</span>
+        Videos Destacados
+      </h2>
+      
+      <div class="videos-grid">
+        {% for video in site.data.videos limit:4 %}
+        <div class="video-card" data-aos="flip-left" data-aos-delay="{{ forloop.index | times: 100 }}">
+          <div class="video-thumbnail">
+            <iframe src="{{ video.url }}" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <h3>{{ video.title }}</h3>
+            <p>{{ video.description }}</p>
+            <span class="video-date">{{ video.date | date: "%d/%m/%Y" }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    
+    <!-- Subir Contenido -->
+    <div class="upload-section" data-aos="fade-up">
+      <div class="upload-card">
+        <h2>📤 ¿Tienes fotos o videos para compartir?</h2>
+        <p>Ayúdanos a construir nuestra galería institucional compartiendo tus mejores momentos</p>
+        <a href="mailto:galeria@ieatanasiogirardot.edu.co" class="btn-upload">
+          Enviar Material
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.galeria-page {
+  padding: 60px 20px;
+  min-height: 100vh;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+}
+
+.page-title .icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.page-subtitle {
+  font-size: 1.3rem;
+  color: #666;
+  font-weight: 400;
+}
+
+.galeria-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 50px;
+}
+
+.filter-btn {
+  padding: 12px 25px;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 30px;
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.filter-btn:hover {
+  border-color: var(--primary-green);
+  color: var(--primary-green);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--primary-green), #1e5f42);
+  color: white;
+  border-color: var(--primary-green);
+  box-shadow: 0 4px 15px rgba(45, 134, 89, 0.3);
+}
+
+.galeria-grid-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.galeria-item-main {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.galeria-item-main.hidden {
+  display: none;
+}
+
+.galeria-item-main:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.galeria-image-wrapper {
+  position: relative;
+  padding-bottom: 100%;
+  overflow: hidden;
+}
+
+.galeria-image-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.galeria-item-main:hover .galeria-image-wrapper img {
+  transform: scale(1.15);
+}
+
+.galeria-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.galeria-item-main:hover .galeria-overlay {
+  opacity: 1;
+}
+
+.galeria-info {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.galeria-info h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.galeria-category {
+  display: inline-block;
+  padding: 5px 12px;
+  background: var(--secondary-red);
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.galeria-date {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.galeria-expand {
+  padding: 10px 20px;
+  background: var(--primary-green);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.galeria-expand:hover {
+  background: #1e5f42;
+  transform: scale(1.05);
+}
+
+.videos-section {
+  margin-bottom: 80px;
+}
+
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 40px;
+}
+
+.video-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.video-thumbnail {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-thumbnail iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-info {
+  padding: 25px;
+}
+
+.video-info h3 {
+  font-size: 1.4rem;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.video-info p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.video-date {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.upload-section {
+  margin-top: 80px;
+}
+
+.upload-card {
+  background: linear-gradient(135deg, var(--primary-green), #1e5f42);
+  border-radius: 30px;
+  padding: 60px 40px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(45, 134, 89, 0.3);
+}
+
+.upload-card h2 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.upload-card p {
+  color: rgba(255,255,255,0.9);
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-upload {
+  display: inline-block;
+  padding: 15px 40px;
+  background: white;
+  color: var(--primary-green);
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.btn-upload:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .galeria-grid-main {
+    grid-template-columns: 1fr;
+  }
+  
+  .videos-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .upload-card {
+    padding: 40px 25px;
+  }
+  
+  .upload-card h2 {
+    font-size: 1.8rem;
+  }
+}
+</style>
+
+<script>
+// Filtro de categorías
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    // Actualizar botón activo
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    
+    const filter = this.dataset.filter;
+    const items = document.querySelectorAll('.galeria-item-main');
+    
+    items.forEach(item => {
+      if (filter === 'all') {
+        item.classList.remove('hidden');
+        item.style.display = 'block';
+      } else {
+        if (item.dataset.category === filter) {
+          item.classList.remove('hidden');
+          item.style.display = 'block';
+        } else {
+          item.classList.add('hidden');
+          item.style.display = 'none';
+        }
+      }
+    });
+  });
+});
+
+// Expandir imagen al hacer clic
+document.querySelectorAll('.galeria-expand').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const img = this.closest('.galeria-item-main').querySelector('img');
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+      <div class="lightbox-content">
+        <span class="lightbox-close">&times;</span>
+        <img src="${img.src}" alt="${img.alt}">
+        <div class="lightbox-info">
+          <h3>${this.closest('.galeria-item-main').querySelector('.galeria-info h3').textContent}</h3>
+        </div>
+      </div>
+    `;
+    
+    document.body.appendChild(lightbox);
+    document.body.style.overflow = 'hidden';
+    
+    setTimeout(() => lightbox.classList.add('active'), 10);
+    
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox || e.target.className === 'lightbox-close') {
+        lightbox.classList.remove('active');
+        setTimeout(() => {
+          document.body.removeChild(lightbox);
+          document.body.style.overflow = 'auto';
+        }, 300);
+      }
+    });
+  });
+});
+</script>
