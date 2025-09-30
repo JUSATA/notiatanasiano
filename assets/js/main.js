@@ -54,7 +54,7 @@
   const audioToggle = document.getElementById('toggle-audio');
   const playIcon = document.querySelector('.play-icon');
   const pauseIcon = document.querySelector('.pause-icon');
- audioPlayer.play();
+audioPlayer.muted = false;
 
   if (audioToggle && audioPlayer) {
     audioToggle.addEventListener('click', () => {

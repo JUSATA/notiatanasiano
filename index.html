@@ -146,9 +146,9 @@ layout: default
 <!-- Control de audio del himno -->
 {% if site.institution.anthem %}
 <div id="audio-player" class="audio-player">
-  <audio id="himno" loop>
-    <source src="{{ site.institution.anthem | relative_url }}" type="audio/mpeg">
-  </audio>
+<audio id="himno" loop autoplay muted>
+  <source src="{{ site.institution.anthem | relative_url }}" type="audio/mpeg">
+</audio>
   <button id="toggle-audio" class="audio-toggle" aria-label="Reproducir/Pausar Himno">
     <span class="play-icon">🔊</span>
     <span class="pause-icon" style="display:none;">🔇</span>
