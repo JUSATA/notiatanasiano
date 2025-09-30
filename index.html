@@ -5,24 +5,14 @@ layout: default
 <div class="hero-section">
   <div class="hero-content">
     <div class="animated-logo">
-      <img src="{{ site.institution.logo | relative_url  }}" alt="Logo" class="logo-img pulse">
+      <img src="{{ site.institution.logo }}" alt="Logo" class="logo-img pulse">
     </div>
     <h1 class="animated-title">{{ site.title }}</h1>
     <div class="quote-container">
       <blockquote id="daily-quote" class="daily-quote fade-in">
-        {% if site.data.frases and site.data.frases.size > 0 %}
-          {{ site.data.frases[0].texto }}
-        {% else %}
-          "La educación es el arma más poderosa que puedes usar para cambiar el mundo."
-        {% endif %}
+        {{ site.data.frases[0].texto }}
       </blockquote>
-      <cite id="quote-author">
-        {% if site.data.frases and site.data.frases.size > 0 %}
-          {{ site.data.frases[0].autor | relative_url  }}
-        {% else %}
-          Nelson Mandela
-        {% endif %}
-      </cite>
+      <cite id="quote-author">{{ site.data.frases[0].autor }}</cite>
     </div>
   </div>
   <div class="scroll-indicator">
@@ -81,18 +71,8 @@ layout: default
       <div class="multimedia-card video-card" data-aos="zoom-in">
         <h3>Videos Recientes</h3>
         <div class="video-container">
-          {% if site.data.videos %}
-            {% if site.data.videos.size > 0 %}
-              <iframe src="{{ site.data.videos[0].url  | relative_url}}" frameborder="0" allowfullscreen></iframe>
-            {% else %}
-              <div style="padding: 40px; text-align: center; color: #666;">
-                <p>📹 Próximamente agregaremos videos</p>
-              </div>
-            {% endif %}
-          {% else %}
-            <div style="padding: 40px; text-align: center; color: #666;">
-              <p>📹 Próximamente agregaremos videos</p>
-            </div>
+          {% if site.data.videos[0] %}
+          <iframe src="{{ site.data.videos[0].url }}" frameborder="0" allowfullscreen></iframe>
           {% endif %}
         </div>
       </div>
@@ -100,17 +80,11 @@ layout: default
       <div class="multimedia-card gallery-preview" data-aos="zoom-in" data-aos-delay="200">
         <h3>Galería de Fotos</h3>
         <div class="photo-grid">
-          {% if site.data.fotos | relative_url %}
-            {% for foto in site.data.fotos limit:4 %}
-              <div class="photo-item">
-                <img src="{{ foto.url | relative_url }}" alt="{{ foto.title }}">
-              </div>
-            {% endfor %}
-          {% else %}
-            <div style="grid-column: 1 / -1; padding: 40px; text-align: center; color: #666;">
-              <p>📸 Próximamente agregaremos fotos</p>
-            </div>
-          {% endif %}
+          {% for foto in site.data.fotos limit:4 %}
+          <div class="photo-item">
+            <img src="{{ foto.url }}" alt="{{ foto.title }}">
+          </div>
+          {% endfor %}
         </div>
         <a href="/galeria/" class="btn-secondary">Ver todas las fotos</a>
       </div>
