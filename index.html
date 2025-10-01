@@ -1,4 +1,3 @@
-cat > index.html <<'EOF'
 ---
 layout: default
 ---
@@ -11,9 +10,19 @@ layout: default
     <h1 class="animated-title">{{ site.title }}</h1>
     <div class="quote-container">
       <blockquote id="daily-quote" class="daily-quote fade-in">
-        {{ site.data.frases[0].texto }}
+        {% if site.data.frases and site.data.frases.size > 0 %}
+          {{ site.data.frases[0].texto }}
+        {% else %}
+          "La educación es el arma más poderosa que puedes usar para cambiar el mundo."
+        {% endif %}
       </blockquote>
-      <cite id="quote-author">{{ site.data.frases[0].autor }}</cite>
+      <cite id="quote-author">
+        {% if site.data.frases and site.data.frases.size > 0 %}
+          {{ site.data.frases[0].autor }}
+        {% else %}
+          Nelson Mandela
+        {% endif %}
+      </cite>
     </div>
   </div>
   <div class="scroll-indicator">
@@ -25,50 +34,65 @@ layout: default
   <div class="container">
     <h2 class="section-title">
       <span class="icon">📰</span>
-      Noticias Destacadas
+      Todas las Noticias
     </h2>
     
-    <div class="news-grid">
-      {% assign destacados = site.noticias | where: "destacado", true | sort: "date" | reverse %}
-      {% for noticia in destacados limit:6 %}
-      <article class="news-card" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
+    <div class="news-grid" id="newsGrid">
+      {% for noticia in site.noticias reversed %}
+      <article class="news-card" data-aos="fade-up" data-aos-delay="{{ forloop.index | modulo: 6 | times: 100 }}">
         {% if noticia.image %}
         <div class="news-image">
-          <img src="{{ noticia.image | relative_url }}" alt="{{ noticia.title }}">
+          <img src="{{ noticia.image | relative_url }}" alt="{{ noticia.title }}" onerror="this.src='https://via.placeholder.com/400x250/2d8659/ffffff?text=Imagen+no+disponible'">
           <div class="news-overlay">
-            <span class="news-category">{{ noticia.category }}</span>
+            <span class="news-category">{{ noticia.category | default: 'General' }}</span>
+          </div>
+        </div>
+        {% else %}
+        <div class="news-image">
+          <img src="https://via.placeholder.com/400x250/2d8659/ffffff?text={{ noticia.title | url_encode }}" alt="{{ noticia.title }}">
+          <div class="news-overlay">
+            <span class="news-category">{{ noticia.category | default: 'General' }}</span>
           </div>
         </div>
         {% endif %}
         
         <div class="news-content">
-          <h3 class="news-title">
-            <a href="{{ noticia.url | relative_url }}">{{ noticia.title }}</a>
-          </h3>
+          <h3 class="news-title">{{ noticia.title }}</h3>
           <p class="news-excerpt">{{ noticia.excerpt | strip_html | truncate: 150 }}</p>
           <div class="news-meta">
             <span class="news-date">
-              <i class="icon-calendar">📅</i>
-              {{ noticia.date | date: "%d/%m/%Y" }}
+              📅 {{ noticia.date | date: "%d/%m/%Y" }}
             </span>
-            <a href="{{ noticia.url | relative_url }}" class="read-more">
+            <button class="read-more-btn" 
+                    data-title="{{ noticia.title | escape }}"
+                    data-date="{{ noticia.date | date: '%d de %B de %Y' }}"
+                    data-author="{{ noticia.author | default: 'Redacción' }}"
+                    data-category="{{ noticia.category | default: 'General' }}"
+                    data-image="{{ noticia.image | relative_url }}"
+                    data-content="{{ noticia.content | markdownify | escape }}">
               Leer más <span class="arrow">→</span>
-            </a>
+            </button>
           </div>
         </div>
       </article>
       {% endfor %}
     </div>
+    
+    {% if site.noticias.size == 0 %}
+    <div class="no-news">
+      <p>📰 Aún no hay noticias publicadas. ¡Vuelve pronto!</p>
+    </div>
+    {% endif %}
   </div>
 </section>
 
-<!-- Multimedia, eventos y audio (usar relative_url para rutas) -->
 <section class="multimedia-section">
   <div class="container">
     <h2 class="section-title">
       <span class="icon">🎥</span>
       Multimedia
     </h2>
+    
     <div class="multimedia-grid">
       <div class="multimedia-card video-card" data-aos="zoom-in">
         <h3>Videos Recientes</h3>
@@ -82,14 +106,17 @@ layout: default
           {% endif %}
         </div>
       </div>
+      
       <div class="multimedia-card gallery-preview" data-aos="zoom-in" data-aos-delay="200">
         <h3>Galería de Fotos</h3>
         <div class="photo-grid">
           {% if site.data.fotos %}
             {% for foto in site.data.fotos limit:4 %}
-            <div class="photo-item">
-              <img src="{{ foto.url | relative_url }}" alt="{{ foto.title }}">
-            </div>
+              <div class="photo-item">
+                <img src="{{ foto.url | relative_url }}" 
+                     alt="{{ foto.title }}"
+                     onerror="this.src='https://via.placeholder.com/300x300/2d8659/ffffff?text=Foto'">
+              </div>
             {% endfor %}
           {% else %}
             <div style="grid-column: 1 / -1; padding: 40px; text-align: center; color: #666;">
@@ -109,6 +136,7 @@ layout: default
       <span class="icon">📅</span>
       Próximos Eventos
     </h2>
+    
     <div class="events-timeline">
       {% for evento in site.eventos limit:4 %}
       <div class="event-item" data-aos="fade-right">
@@ -124,17 +152,391 @@ layout: default
       </div>
       {% endfor %}
     </div>
+    
+    {% if site.eventos.size == 0 %}
+    <div class="no-events">
+      <p>📅 No hay eventos programados próximamente.</p>
+    </div>
+    {% endif %}
   </div>
 </section>
 
-<!-- Control de audio del himno -->
-<div id="audio-player" class="audio-player">
-  <audio id="himno" loop>
-    <source src="{{ site.institution.anthem | relative_url }}" type="audio/mpeg">
-  </audio>
-  <button id="toggle-audio" class="audio-toggle" aria-label="Reproducir/Pausar Himno">
-    <span class="play-icon">🔊</span>
-    <span class="pause-icon" style="display:none;">🔇</span>
-  </button>
+<!-- Modal para mostrar noticia completa -->
+<div id="news-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-backdrop"></div>
+  <div class="modal-container">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Cerrar modal">&times;</button>
+      
+      <article class="modal-article">
+        <header class="modal-header">
+          <span class="modal-category" id="modal-category"></span>
+          <h1 class="modal-title" id="modal-title"></h1>
+          <div class="modal-meta">
+            <span class="modal-date" id="modal-date"></span>
+            <span class="modal-author" id="modal-author"></span>
+          </div>
+        </header>
+        
+        <div class="modal-image-container" id="modal-image-container">
+          <img id="modal-image" alt="">
+        </div>
+        
+        <div class="modal-body" id="modal-body"></div>
+        
+        <div class="modal-share">
+          <h4>Compartir esta noticia:</h4>
+          <div class="share-buttons">
+            <button class="share-btn facebook" id="share-facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+              Facebook
+            </button>
+            <button class="share-btn twitter" id="share-twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              </svg>
+              Twitter
+            </button>
+            <button class="share-btn whatsapp" id="share-whatsapp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              WhatsApp
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
 </div>
-EOF
+
+<style>
+/* Estilos del Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.modal-container {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 10001;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-content {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgba(0,0,0,0.1);
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10002;
+}
+
+.modal-close:hover {
+  background: var(--secondary-red);
+  color: white;
+  transform: rotate(90deg);
+}
+
+.modal-article {
+  color: var(--text-dark);
+}
+
+.modal-header {
+  margin-bottom: 30px;
+}
+
+.modal-category {
+  display: inline-block;
+  background: var(--secondary-red);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.modal-meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.modal-date::before {
+  content: '📅 ';
+}
+
+.modal-author::before {
+  content: '✍️ ';
+}
+
+.modal-image-container {
+  margin-bottom: 30px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.modal-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.modal-image-container:empty {
+  display: none;
+}
+
+.modal-body {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.modal-body h2,
+.modal-body h3 {
+  color: var(--primary-green);
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.modal-body p {
+  margin-bottom: 20px;
+}
+
+.modal-body ul,
+.modal-body ol {
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+.modal-body li {
+  margin-bottom: 10px;
+}
+
+.modal-share {
+  padding-top: 30px;
+  border-top: 2px solid #f0f0f0;
+  text-align: center;
+}
+
+.modal-share h4 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  color: var(--text-dark);
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  color: var(--primary-green);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s ease;
+  padding: 0;
+  font-family: inherit;
+}
+
+.read-more-btn:hover {
+  gap: 10px;
+  color: var(--secondary-red);
+}
+
+.read-more-btn .arrow {
+  transition: transform 0.3s ease;
+}
+
+.no-news, .no-events {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 25px;
+  }
+  
+  .modal-title {
+    font-size: 1.8rem;
+  }
+  
+  .modal-body {
+    font-size: 1rem;
+  }
+  
+  .modal-container {
+    width: 95%;
+  }
+}
+</style>
+
+<script>
+(function() {
+  const modal = document.getElementById('news-modal');
+  const modalBackdrop = modal.querySelector('.modal-backdrop');
+  const modalClose = modal.querySelector('.modal-close');
+  
+  // Elementos del modal
+  const modalTitle = document.getElementById('modal-title');
+  const modalDate = document.getElementById('modal-date');
+  const modalAuthor = document.getElementById('modal-author');
+  const modalCategory = document.getElementById('modal-category');
+  const modalImageContainer = document.getElementById('modal-image-container');
+  const modalImage = document.getElementById('modal-image');
+  const modalBody = document.getElementById('modal-body');
+  
+  // Botones de compartir
+  const shareFacebook = document.getElementById('share-facebook');
+  const shareTwitter = document.getElementById('share-twitter');
+  const shareWhatsapp = document.getElementById('share-whatsapp');
+  
+  let currentTitle = '';
+  
+  // Abrir modal
+  function openModal(data) {
+    modalTitle.textContent = data.title;
+    modalDate.textContent = data.date;
+    modalAuthor.textContent = data.author;
+    modalCategory.textContent = data.category;
+    
+    // Manejar imagen
+    if (data.image && data.image !== 'null' && !data.image.includes('undefined')) {
+      modalImage.src = data.image;
+      modalImage.alt = data.title;
+      modalImageContainer.style.display = 'block';
+    } else {
+      modalImageContainer.style.display = 'none';
+    }
+    
+    modalBody.innerHTML = data.content;
+    
+    currentTitle = data.title;
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  // Cerrar modal
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  
+  // Event listeners para abrir modal
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.read-more-btn')) {
+      const btn = e.target.closest('.read-more-btn');
+      const data = {
+        title: btn.dataset.title,
+        date: btn.dataset.date,
+        author: btn.dataset.author,
+        category: btn.dataset.category,
+        image: btn.dataset.image,
+        content: btn.dataset.content
+      };
+      openModal(data);
+    }
+  });
+  
+  // Event listeners para cerrar modal
+  modalClose.addEventListener('click', closeModal);
+  modalBackdrop.addEventListener('click', closeModal);
+  
+  // Cerrar con tecla ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+  
+  // Compartir en redes sociales
+  shareFacebook.addEventListener('click', function() {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+  });
+  
+  shareTwitter.addEventListener('click', function() {
+    const text = encodeURIComponent(currentTitle);
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+  });
+  
+  shareWhatsapp.addEventListener('click', function() {
+    const text = encodeURIComponent(`${currentTitle} - ${window.location.href}`);
+    window.open(`https://wa.me/?text=${text}`, '_blank');
+  });
+})();
+</script>
