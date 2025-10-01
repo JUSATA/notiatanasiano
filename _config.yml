@@ -28,9 +28,6 @@ collections:
   eventos:
     output: true
     permalink: /eventos/:title/
-  galeria:
-    output: true
-    permalink: /galeria/:title/
 
 defaults:
   - scope:
