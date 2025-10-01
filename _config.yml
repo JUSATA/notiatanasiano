@@ -6,8 +6,8 @@ institution:
   name: "Institución Educativa Atanasio Girardot"
   location: "Girardota, Antioquia"
   logo: "/assets/images/logo.png"
-  flag: "/assets/images/bandera-girardota.png"
-  anthem: "/assets/audio/himno.mp3"
+  logo: "/notiatanasiano/assets/images/logo.png"
+  anthem: "/notiatanasiano/assets/audio/himno.mp3"
 
 social:
   facebook: "https://facebook.com/profile.php?id=100008360917770"

@@ -1,10 +1,23 @@
-  title: "Mi Video"
-  url: "https://www.youtube.com/embed/dQw4w9WgXcQ"
-  description: "inversiones en los proyectos de girardota"
-  date: 2025-09-30
+# Videos destacados para la página principal
+# Para obtener el ID de YouTube: https://www.youtube.com/watch?v=ID_AQUI
+# Usa: https://www.youtube.com/embed/ID_AQUI
 
-  title: "Video de Ejemplo"
-  url: "https://www.youtube.com/embed/dQw4w9WgXcQ"
-  description: "Descripción"
-  date: 2025-09-29
-  
+- title: "Ceremonia de Graduación 2024"
+  url: "https://www.youtube.com/watch?v=abPVEJoRiMw"
+  description: "Emotiva ceremonia de graduación de la promoción 2024"
+  date: 2024-11-20
+
+- title: "Festival Cultural Institucional"
+  url: "https://www.youtube.com/embed/VIDEO_ID_2"
+  description: "Presentaciones artísticas y culturales de nuestros estudiantes"
+  date: 2024-09-15
+
+- title: "Feria de la Ciencia 2024"
+  url: "https://www.youtube.com/embed/VIDEO_ID_3"
+  description: "Proyectos científicos innovadores presentados por los estudiantes"
+  date: 2024-08-10
+
+- title: "Día del Idioma - Presentaciones"
+  url: "https://www.youtube.com/embed/VIDEO_ID_4"
+  description: "Celebración del Día del Idioma con obras teatrales y poesía"
+  date: 2024-04-23
