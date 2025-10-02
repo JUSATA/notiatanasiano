@@ -10,9 +10,10 @@ institution:
   name: "Institución Educativa Atanasio Girardot"
   location: "Girardota, Antioquia"
   logo: "/assets/images/logo.png"
+  flag: "/assets/images/bandera-girardota.png"
   anthem: "/assets/audio/himno.mp3"
 
-# Redes sociales - ACTUALIZA con tus URLs reales
+# Redes sociales
 social:
   facebook: "https://facebook.com/profile.php?id=100008360917770"
   youtube: "https://www.youtube.com/@juliansancheztaborda5203"
@@ -54,10 +55,10 @@ defaults:
     values:
       layout: "default"
 
-# Paginación
+# Paginación (solo para noticias)
 paginate: 9
 paginate_path: "/noticias/page:num/"
-paginate_path: "/eventos/page:num/"
+
 # Procesamiento
 safe: false
 incremental: false
@@ -73,6 +74,3 @@ exclude:
   - vendor
   - .sass-cache
   - .jekyll-cache
-  - CREAR-ASSETS.md
-  - SOLUCION-ERRORES.md
-  - INICIO-RAPIDO.md
