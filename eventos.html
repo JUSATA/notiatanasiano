@@ -1,0 +1,572 @@
+---
+layout: default
+title: "Eventos"
+---
+
+<section class="eventos-page">
+  <div class="container">
+    <header class="page-header" data-aos="fade-down">
+      <h1 class="page-title">
+        <span class="icon">📅</span>
+        Eventos Institucionales
+      </h1>
+      <p class="page-subtitle">Conoce las actividades y eventos programados en nuestra institución</p>
+    </header>
+    
+    <!-- Filtros -->
+    <div class="eventos-filters" data-aos="fade-up">
+      <button class="filter-btn active" data-filter="all">
+        🎯 Todos los Eventos
+      </button>
+      <button class="filter-btn" data-filter="proximos">
+        ⏰ Próximos
+      </button>
+      <button class="filter-btn" data-filter="pasados">
+        ✅ Realizados
+      </button>
+    </div>
+    
+    <!-- Grid de Eventos -->
+    <div class="eventos-grid" id="eventosGrid">
+      {% assign eventos_ordenados = site.eventos | sort: 'date' | reverse %}
+      {% assign fecha_actual = 'now' | date: '%s' %}
+      
+      {% for evento in eventos_ordenados %}
+        {% assign fecha_evento = evento.date | date: '%s' %}
+        {% if fecha_evento >= fecha_actual %}
+          {% assign estado = 'proximo' %}
+          {% assign clase_estado = 'evento-proximo' %}
+        {% else %}
+          {% assign estado = 'pasado' %}
+          {% assign clase_estado = 'evento-pasado' %}
+        {% endif %}
+        
+        <article class="evento-card {{ clase_estado }}" 
+                 data-filter="{{ estado }}"
+                 data-aos="fade-up" 
+                 data-aos-delay="{{ forloop.index | modulo: 3 | times: 100 }}">
+          
+          {% if evento.image %}
+          <div class="evento-image">
+            <img src="{{ evento.image | relative_url }}" 
+                 alt="{{ evento.title }}"
+                 onerror="this.src='https://via.placeholder.com/400x250/2d8659/ffffff?text=Evento'">
+            <div class="evento-overlay">
+              {% if estado == 'proximo' %}
+              <span class="evento-status proximo">Próximamente</span>
+              {% else %}
+              <span class="evento-status pasado">Realizado</span>
+              {% endif %}
+            </div>
+          </div>
+          {% else %}
+          <div class="evento-image">
+            <img src="https://via.placeholder.com/400x250/2d8659/ffffff?text={{ evento.title | url_encode }}" 
+                 alt="{{ evento.title }}">
+            <div class="evento-overlay">
+              {% if estado == 'proximo' %}
+              <span class="evento-status proximo">Próximamente</span>
+              {% else %}
+              <span class="evento-status pasado">Realizado</span>
+              {% endif %}
+            </div>
+          </div>
+          {% endif %}
+          
+          <div class="evento-content">
+            <div class="evento-date-badge">
+              <span class="date-day">{{ evento.date | date: "%d" }}</span>
+              <span class="date-month">{{ evento.date | date: "%b" }}</span>
+              <span class="date-year">{{ evento.date | date: "%Y" }}</span>
+            </div>
+            
+            <h3 class="evento-title">{{ evento.title }}</h3>
+            
+            <div class="evento-details">
+              {% if evento.location %}
+              <span class="evento-detail">
+                📍 {{ evento.location }}
+              </span>
+              {% endif %}
+              
+              {% if evento.time %}
+              <span class="evento-detail">
+                🕐 {{ evento.time }}
+              </span>
+              {% endif %}
+            </div>
+            
+            <p class="evento-description">
+              {{ evento.description | default: evento.excerpt | strip_html | truncate: 150 }}
+            </p>
+            
+            <div class="evento-footer">
+              <a href="{{ evento.url | relative_url }}" class="evento-link">
+                Ver detalles <span class="arrow">→</span>
+              </a>
+              
+              {% if evento.organizer %}
+              <span class="evento-organizer">
+                Por: {{ evento.organizer }}
+              </span>
+              {% endif %}
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+    
+    {% if site.eventos.size == 0 %}
+    <div class="no-eventos">
+      <div class="no-eventos-content">
+        <span class="no-eventos-icon">📅</span>
+        <h3>No hay eventos programados</h3>
+        <p>Pronto publicaremos nuevos eventos institucionales</p>
+      </div>
+    </div>
+    {% endif %}
+    
+    <!-- Calendario Próximos Eventos -->
+    <div class="calendario-section" data-aos="fade-up">
+      <h2 class="section-title">
+        <span class="icon">🗓️</span>
+        Calendario de Eventos
+      </h2>
+      
+      <div class="calendario-timeline">
+        {% assign proximos_eventos = site.eventos | sort: 'date' %}
+        {% for evento in proximos_eventos limit:5 %}
+          {% assign fecha_evento = evento.date | date: '%s' %}
+          {% if fecha_evento >= fecha_actual %}
+          <div class="timeline-item" data-aos="fade-right" data-aos-delay="{{ forloop.index | times: 100 }}">
+            <div class="timeline-date">
+              <span class="timeline-day">{{ evento.date | date: "%d" }}</span>
+              <span class="timeline-month">{{ evento.date | date: "%b" }}</span>
+            </div>
+            <div class="timeline-content">
+              <h4>{{ evento.title }}</h4>
+              <p>{{ evento.location }}</p>
+              <span class="timeline-time">{{ evento.time }}</span>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    
+    <!-- Call to Action -->
+    <div class="cta-section" data-aos="zoom-in">
+      <div class="cta-card">
+        <h2>¿Tienes un evento para compartir?</h2>
+        <p>Si organizas un evento institucional, contáctanos para publicarlo en nuestra plataforma</p>
+        <a href="mailto:eventos@ieatanasiogirardot.edu.co" class="cta-btn">
+          📧 Contactar
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.eventos-page {
+  padding: 60px 20px;
+  min-height: 100vh;
+}
+
+.eventos-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 50px;
+}
+
+.filter-btn {
+  padding: 12px 25px;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 30px;
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.filter-btn:hover {
+  border-color: var(--primary-green);
+  color: var(--primary-green);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--primary-green), #1e5f42);
+  color: white;
+  border-color: var(--primary-green);
+  box-shadow: 0 4px 15px rgba(45, 134, 89, 0.3);
+}
+
+.eventos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 35px;
+  margin-bottom: 80px;
+}
+
+.evento-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.evento-card.hidden {
+  display: none;
+}
+
+.evento-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.evento-image {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.evento-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.evento-card:hover .evento-image img {
+  transform: scale(1.1);
+}
+
+.evento-overlay {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.evento-status {
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.evento-status.proximo {
+  background: var(--primary-green);
+  color: white;
+}
+
+.evento-status.pasado {
+  background: #6c757d;
+  color: white;
+}
+
+.evento-content {
+  padding: 25px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.evento-date-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 15px;
+  background: linear-gradient(135deg, var(--secondary-red), #a00d26);
+  border-radius: 12px;
+  color: white;
+  margin-bottom: 15px;
+  width: fit-content;
+  box-shadow: 0 3px 10px rgba(200, 16, 46, 0.3);
+}
+
+.date-day {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.date-month {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.date-year {
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+.evento-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+.evento-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.evento-detail {
+  color: #666;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.evento-description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.evento-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid #f0f0f0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.evento-link {
+  color: var(--primary-green);
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
+
+.evento-link:hover {
+  gap: 10px;
+  color: var(--secondary-red);
+}
+
+.evento-organizer {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.no-eventos {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.no-eventos-icon {
+  font-size: 5rem;
+  display: block;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.no-eventos-content h3 {
+  font-size: 2rem;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+.no-eventos-content p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.calendario-section {
+  margin-bottom: 80px;
+}
+
+.calendario-timeline {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 25px;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+  transform: translateX(10px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+}
+
+.timeline-date {
+  min-width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, var(--primary-green), #1e5f42);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.timeline-day {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.timeline-month {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.timeline-content {
+  flex: 1;
+}
+
+.timeline-content h4 {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin-bottom: 5px;
+}
+
+.timeline-content p {
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.timeline-time {
+  color: var(--primary-green);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.cta-section {
+  margin-top: 80px;
+}
+
+.cta-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 30px;
+  padding: 60px 40px;
+  text-align: center;
+  box-shadow: 0 15px 50px rgba(102, 126, 234, 0.4);
+}
+
+.cta-card h2 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.cta-card p {
+  color: rgba(255,255,255,0.95);
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 15px 40px;
+  background: white;
+  color: #667eea;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+  .eventos-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .cta-card {
+    padding: 40px 25px;
+  }
+  
+  .cta-card h2 {
+    font-size: 1.8rem;
+  }
+}
+</style>
+
+<script>
+// Filtro de eventos
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    // Actualizar botón activo
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    
+    const filter = this.dataset.filter;
+    const eventos = document.querySelectorAll('.evento-card');
+    
+    eventos.forEach(evento => {
+      if (filter === 'all') {
+        evento.classList.remove('hidden');
+        evento.style.display = 'flex';
+      } else if (filter === 'proximos') {
+        if (evento.classList.contains('evento-proximo')) {
+          evento.classList.remove('hidden');
+          evento.style.display = 'flex';
+        } else {
+          evento.classList.add('hidden');
+          evento.style.display = 'none';
+        }
+      } else if (filter === 'pasados') {
+        if (evento.classList.contains('evento-pasado')) {
+          evento.classList.remove('hidden');
+          evento.style.display = 'flex';
+        } else {
+          evento.classList.add('hidden');
+          evento.style.display = 'none';
+        }
+      }
+    });
+  });
+});
+</script>
