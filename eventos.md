@@ -207,10 +207,11 @@ permalink: /eventos/
 <div class="container">
   
   <header class="page-header" data-aos="fade-down">
-      <h1 class="page-title">
-        <span class="icon">📅</span>
+           <span class="icon">📅</span>
+
+<h1 class="page-title">
         Eventos
-      </h1>
+</h1>
       <p class="page-subtitle">Cronograma de actividades</p>
  </header>
 
