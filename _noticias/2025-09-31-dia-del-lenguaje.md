@@ -1,6 +1,6 @@
 ---
 layout: noticia
-title: "Celebración del Día del Maestro"
+title: "Celebración del Día del lenguaje"
 date: 2025-09-30
 category: "Eventos"
 author: "Comunicaciones"
