@@ -206,7 +206,7 @@ permalink: /eventos/
 
 <div class="container">
   
-<header class="page-header" data-aos="fade-down">
+<header class="" data-aos="fade-down">
  
 
 <h1><span class="icon">📅</span>Eventos</h1>
