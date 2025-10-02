@@ -199,8 +199,7 @@ permalink: /eventos/
  
 <section class="page-header">
   <div class="container">
-  <span class="icon">📅</span>
-    <h1 class="page-title">Eventos</h1>
+    <h1 class="page-title"> <span class="icon">📅</span>Eventos</h1>
     <p class="page-subtitle">Cronograma Institucional</p>
   </div>
 </section>
