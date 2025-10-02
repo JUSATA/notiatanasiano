@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Galería Multimedia"
+permalink: /galeria/
 ---
 
 <section class="galeria-page">
