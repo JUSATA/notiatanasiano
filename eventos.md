@@ -205,10 +205,14 @@ permalink: /eventos/
 </style>
 
 <div class="container">
-  <header class="page-header">
-    <h1>📅 Eventos</h1>
-    <p>Mantente informado sobre los próximos eventos de nuestra institución</p>
-  </header>
+  
+  <header class="page-header" data-aos="fade-down">
+      <h1 class="page-title">
+        <span class="icon">📅</span>
+        Eventos
+      </h1>
+      <p class="page-subtitle">Cronograma de actividades</p>
+ </header>
 
   <section class="eventos-list">
     {% if site.eventos.size > 0 %}
