@@ -9,16 +9,14 @@ url: "https://jusata.github.io"
 institution:
   name: "Institución Educativa Atanasio Girardot"
   location: "Girardota, Antioquia"
-  # Usando placeholder temporal - Reemplaza con tu logo real cuando lo tengas
-  logo: "https://via.placeholder.com/200x200/2d8659/ffffff?text=IE+AG"
-  # Deja vacío si no tienes el himno aún
-  anthem: ""
+  logo: "/assets/images/logo.png"
+  anthem: "/assets/audio/himno.mp3"
 
 # Redes sociales - ACTUALIZA con tus URLs reales
 social:
-  facebook: "https://facebook.com"
-  youtube: "https://youtube.com"
-  instagram: "https://instagram.com"
+  facebook: "https://facebook.com/profile.php?id=100008360917770"
+  youtube: "https://www.youtube.com/@juliansancheztaborda5203"
+  instagram: "https://www.instagram.com/ie.atanasio"
 
 # Configuración de Jekyll
 markdown: kramdown
