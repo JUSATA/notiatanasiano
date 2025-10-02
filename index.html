@@ -74,26 +74,25 @@ layout: default
       <div class="multimedia-card video-card" data-aos="zoom-in">
         <h3>Videos Recientes</h3>
         <div class="video-container">
-          {% if site.data.videos[0] %}
-
           <iframe
-            width="100%"
-            height="315"
-            src="https://www.youtube.com/watch?v=mdojOu2Uk8g&list=WL"
-            frameborder="0"
-            allow="autoplay; encrypted-media; clipboard-write; picture-in-picture"
-            allowfullscreen>
-            </iframe>
-          {% endif %}
+        width="100%"
+        height="315"
+        src="https://www.youtube.com/watch?v=mdojOu2Uk8g&list=WL"
+        frameborder="0"
+        allow="autoplay; encrypted-media; clipboard-write; picture-in-picture"
+        allowfullscreen>
+        </iframe>
         </div>
       </div>
       
       <div class="multimedia-card gallery-preview" data-aos="zoom-in" data-aos-delay="200">
         <h3>Galería de Fotos</h3>
         <div class="photo-grid">
+          {% for foto in site.data.fotos limit:4 %}
           <div class="photo-item">
             <img src="{{ foto.url | relative_url }}" alt="{{ foto.title | relative_url }}">
           </div>
+          {% endfor %}
         </div>
         <a href="/galeria/" class="btn-secondary">Ver todas las fotos</a>
       </div>
