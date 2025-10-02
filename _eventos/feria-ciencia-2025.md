@@ -5,7 +5,7 @@ date: 2025-08-15
 time: "8:00 AM - 4:00 PM"
 location: "Auditorio Principal"
 organizer: "Departamento de Ciencias"
-image: "https://jusata.github.io/notiatanasiano//assets/images/eventos/feria/ciencia.jpg"
+image: "https://jusata.github.io/notiatanasiano//assets/images/eventos/feria/feria-ciencias.jpg"
 description: "Muestra de proyectos científicos realizados por estudiantes"
 ---
 
