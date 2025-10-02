@@ -1,80 +1,14 @@
-# Configuración del Periódico Digital
-title: "El Girardotense"
-subtitle: "Periódico Digital Institucional"
-description: "Noticias y eventos de la Institución Educativa Atanasio Girardot"
-baseurl: "/notiatanasiano"
-url: "https://jusata.github.io"
+title: "Notiatanasiano"  # Tu título
+url: "https://jusata.github.io"  # Tu URL
 
-# Información de la institución
 institution:
   name: "Institución Educativa Atanasio Girardot"
   location: "Girardota, Antioquia"
-  # Usando placeholder temporal - Reemplaza con tu logo real cuando lo tengas
-  logo: "https://via.placeholder.com/200x200/2d8659/ffffff?text=IE+AG"
-  # Deja vacío si no tienes el himno aún
-  anthem: ""
+  logo: "/assets/images/logo.png"
+  anthem: "/assets/audio/himno.mp3"
 
-# Redes sociales - ACTUALIZA con tus URLs reales
+
 social:
-  facebook: "https://facebook.com"
-  youtube: "https://youtube.com"
-  instagram: "https://instagram.com"
-
-# Configuración de Jekyll
-markdown: kramdown
-highlighter: rouge
-
-# Plugins
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-sitemap
-
-# Colecciones
-collections:
-  noticias:
-    output: true
-    permalink: /noticias/:title/
-  eventos:
-    output: true
-    permalink: /eventos/:title/
-
-# Defaults
-defaults:
-  - scope:
-      path: ""
-      type: "noticias"
-    values:
-      layout: "noticia"
-  - scope:
-      path: ""
-      type: "eventos"
-    values:
-      layout: "evento"
-  - scope:
-      path: ""
-    values:
-      layout: "default"
-
-# Paginación
-paginate: 9
-paginate_path: "/noticias/page:num/"
-
-# Procesamiento
-safe: false
-incremental: false
-lsi: false
-future: false
-
-# Exclude
-exclude:
-  - README.md
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor
-  - .sass-cache
-  - .jekyll-cache
-  - CREAR-ASSETS.md
-  - SOLUCION-ERRORES.md
-  - INICIO-RAPIDO.md
+  facebook: "https://facebook.com/profile.php?id=100008360917770"
+  youtube: "https://www.youtube.com/@juliansancheztaborda5203"
+  instagram: "https://www.instagram.com/ie.atanasio"
