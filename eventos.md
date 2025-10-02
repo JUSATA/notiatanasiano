@@ -204,7 +204,7 @@ permalink: /eventos/
 }
 </style>
 
-<div class="container">
+
  
 <section class="page-header">
   <div class="container">
@@ -214,7 +214,7 @@ permalink: /eventos/
   </div>
 </section>
 
-
+<div class="container">
   <section class="eventos-list">
     {% if site.eventos.size > 0 %}
       <div class="events-timeline">
