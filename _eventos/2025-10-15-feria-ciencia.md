@@ -1,5 +1,5 @@
 ---
-layout: evento
+layout: eventos
 title: "Feria de la Ciencia 2025"
 date: 2025-10-15
 time: "8:00 AM - 4:00 PM"
