@@ -1,4 +1,3 @@
-cat > index.html <<'EOF'
 ---
 layout: default
 ---
@@ -29,12 +28,11 @@ layout: default
     </h2>
     
     <div class="news-grid">
-      {% assign destacados = site.noticias | where: "destacado", true | sort: "date" | reverse %}
-      {% for noticia in destacados limit:6 %}
+      {% for noticia in site.noticias limit:6 %}
       <article class="news-card" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
         {% if noticia.image %}
         <div class="news-image">
-          <img src="{{ noticia.image | relative_url }}" alt="{{ noticia.title }}">
+          <img src="{{ noticia.image  | relative_url}}" alt="{{ noticia.title }}">
           <div class="news-overlay">
             <span class="news-category">{{ noticia.category }}</span>
           </div>
@@ -62,42 +60,33 @@ layout: default
   </div>
 </section>
 
-<!-- Multimedia, eventos y audio (usar relative_url para rutas) -->
 <section class="multimedia-section">
   <div class="container">
     <h2 class="section-title">
       <span class="icon">🎥</span>
       Multimedia
     </h2>
+    
     <div class="multimedia-grid">
       <div class="multimedia-card video-card" data-aos="zoom-in">
         <h3>Videos Recientes</h3>
         <div class="video-container">
-          {% if site.data.videos and site.data.videos.size > 0 %}
-            <iframe src="{{ site.data.videos[0].url }}" frameborder="0" allowfullscreen></iframe>
-          {% else %}
-            <div style="padding: 40px; text-align: center; color: #666;">
-              <p>📹 Próximamente agregaremos videos</p>
-            </div>
+          {% if site.data.videos[0] %}
+          <iframe src="{{ site.data.videos[0].url }}" frameborder="0" allowfullscreen></iframe>
           {% endif %}
         </div>
       </div>
+      
       <div class="multimedia-card gallery-preview" data-aos="zoom-in" data-aos-delay="200">
         <h3>Galería de Fotos</h3>
         <div class="photo-grid">
-          {% if site.data.fotos %}
-            {% for foto in site.data.fotos limit:4 %}
-            <div class="photo-item">
-              <img src="{{ foto.url | relative_url }}" alt="{{ foto.title }}">
-            </div>
-            {% endfor %}
-          {% else %}
-            <div style="grid-column: 1 / -1; padding: 40px; text-align: center; color: #666;">
-              <p>📸 Próximamente agregaremos fotos</p>
-            </div>
-          {% endif %}
+          {% for foto in site.data.fotos limit:4 %}
+          <div class="photo-item">
+            <img src="{{ foto.url | relative_url }}" alt="{{ foto.title | relative_url }}">
+          </div>
+          {% endfor %}
         </div>
-        <a href="{{ '/galeria/' | relative_url }}" class="btn-secondary">Ver todas las fotos</a>
+        <a href="/galeria/" class="btn-secondary">Ver todas las fotos</a>
       </div>
     </div>
   </div>
@@ -109,6 +98,7 @@ layout: default
       <span class="icon">📅</span>
       Próximos Eventos
     </h2>
+    
     <div class="events-timeline">
       {% for evento in site.eventos limit:4 %}
       <div class="event-item" data-aos="fade-right">
@@ -119,7 +109,7 @@ layout: default
         <div class="event-content">
           <h3>{{ evento.title }}</h3>
           <p>{{ evento.description }}</p>
-          <a href="{{ evento.url | relative_url }}" class="event-link">Ver detalles →</a>
+          <a href="{{ evento.url | relative_url}}" class="event-link">Ver detalles →</a>
         </div>
       </div>
       {% endfor %}
@@ -130,11 +120,10 @@ layout: default
 <!-- Control de audio del himno -->
 <div id="audio-player" class="audio-player">
   <audio id="himno" loop>
-    <source src="{{ site.institution.anthem | relative_url }}" type="audio/mpeg">
+    <source src="{{ site.institution.anthem | relative_url}}" type="audio/mpeg">
   </audio>
   <button id="toggle-audio" class="audio-toggle" aria-label="Reproducir/Pausar Himno">
     <span class="play-icon">🔊</span>
     <span class="pause-icon" style="display:none;">🔇</span>
   </button>
 </div>
-EOF
