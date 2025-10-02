@@ -74,14 +74,9 @@ layout: default
       <div class="multimedia-card video-card" data-aos="zoom-in">
         <h3>Videos Recientes</h3>
         <div class="video-container">
-          <iframe
-        width="100%"
-        height="315"
-        src="https://www.youtube.com/watch?v=mdojOu2Uk8g&list=WL"
-        frameborder="0"
-        allow="autoplay; encrypted-media; clipboard-write; picture-in-picture"
-        allowfullscreen>
-        </iframe>
+          {% if site.data.videos[0] %}
+          <iframe src="{{ site.data.videos[0].url }}" frameborder="0" allowfullscreen></iframe>
+          {% endif %}
         </div>
       </div>
       
