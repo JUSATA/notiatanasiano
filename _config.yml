@@ -57,7 +57,7 @@ defaults:
 # Paginación
 paginate: 9
 paginate_path: "/noticias/page:num/"
-
+paginate_path: "/eventos/page:num/"
 # Procesamiento
 safe: false
 incremental: false
