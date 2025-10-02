@@ -37,6 +37,7 @@ collections:
   eventos:
     output: true
     permalink: /eventos/:title/
+    
 
 # Defaults
 defaults:
