@@ -1,7 +1,7 @@
 ---
 layout: evento
 title: "Feria de la Ciencia 2025"
-date: 2025-10-01
+date: 2025-11-01
 time: "8:00 AM - 4:00 PM"
 location: "Auditorio Principal"
 organizer: "Departamento de Ciencias"
