@@ -4,6 +4,7 @@ title: "Galería de Fotos"
 permalink: /galeria/
 ---
 
+
 <section class="page-header">
   <div class="container">
     <h1 class="page-title">Galería de Fotos</h1>
