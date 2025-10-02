@@ -46,7 +46,7 @@ body {
 
 @keyframes slideDown {
   from {
-    transform: translateY(-100%);
+    transform: translateY(-800%);
     opacity: 0;
   }
   to {
