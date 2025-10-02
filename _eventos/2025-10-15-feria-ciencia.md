@@ -1,157 +1,264 @@
 ---
 layout: evento
-title: "Feria de la Ciencia y Tecnología 2025"
+title: "Feria de la Ciencia 2025"
 date: 2025-10-15
-location: "Auditorio Principal - IE Atanasio Girardot"
 time: "8:00 AM - 4:00 PM"
+location: "Auditorio Principal"
 organizer: "Departamento de Ciencias"
-image: "/assets/images/eventos/feria-ciencia.jpg"
-description: "Un día dedicado a la innovación, creatividad y descubrimiento científico"
-registro: "https://forms.google.com/TU_FORMULARIO"
-registro_info: "¡Inscribe tu proyecto científico! Cupos limitados disponibles."
+image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800"
+description: "Muestra de proyectos científicos realizados por estudiantes"
+registro: "#"
+registro_info: "Entrada libre para toda la comunidad educativa"
 ---
 
-## ¡Prepárate para un Día Lleno de Ciencia!
+La **Feria de la Ciencia 2025** es el evento más esperado del año, donde nuestros estudiantes presentan sus proyectos de investigación científica.
 
-La **Feria de la Ciencia y Tecnología 2025** es el evento más esperado del año académico. Durante esta jornada, nuestros estudiantes tendrán la oportunidad de presentar sus proyectos innovadores y demostrar todo lo que han aprendido.
+## Categorías de Proyectos
 
-### 🎯 Objetivos del Evento
+- 🔬 **Biología:** Ecosistemas y biodiversidad
+- ⚗️ **Química:** Reacciones y compuestos
+- ⚡ **Física:** Energía y movimiento
+- 💻 **Tecnología:** Robótica e innovación
 
-- Fomentar el interés por las ciencias y la tecnología
-- Desarrollar habilidades de investigación y presentación
-- Promover el trabajo en equipo y la creatividad
-- Conectar el aprendizaje teórico con aplicaciones prácticas
+## Horario del Evento
 
-## 📋 Programación del Día
+- **8:00 AM:** Inauguración y palabras de bienvenida
+- **9:00 AM - 12:00 PM:** Presentaciones de proyectos
+- **12:00 PM - 1:00 PM:** Receso y almuerzo
+- **1:00 PM - 3:30 PM:** Continuación de presentaciones
+- **3:30 PM:** Premiación a los mejores proyectos
 
-### Mañana (8:00 AM - 12:00 PM)
+## Premios
 
-**8:00 - 8:30 AM:** Registro y bienvenida
-- Acreditación de participantes
-- Entrega de material informativo
-- Instalación de stands
+Los tres mejores proyectos de cada categoría recibirán:
+- 🥇 Medalla de oro y certificado
+- 🥈 Medalla de plata y certificado
+- 🥉 Medalla de bronce y certificado
 
-**8:30 - 9:00 AM:** Ceremonia de apertura
-- Palabras del rector
-- Presentación de jurados
+¡No te pierdas esta oportunidad de ver el talento científico de nuestros estudiantes!
+EOF
+
+# Evento 2: Olimpiadas Deportivas
+cat > _eventos/olimpiadas-deportivas.md << 'EOF'
+---
+layout: evento
+title: "Olimpiadas Deportivas Institucionales"
+date: 2025-10-20
+time: "7:00 AM - 5:00 PM"
+location: "Polideportivo Municipal"
+organizer: "Departamento de Educación Física"
+image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800"
+description: "Competencia deportiva entre todos los grados de la institución"
+---
+
+Las **Olimpiadas Deportivas 2025** reunirán a estudiantes de todos los grados en una jornada llena de deporte, competencia sana y compañerismo.
+
+## Disciplinas Deportivas
+
+### Deportes de Equipo
+- ⚽ Fútbol (masculino y femenino)
+- 🏐 Voleibol
+- 🏀 Baloncesto
+- 🤾 Balonmano
+
+### Deportes Individuales
+- 🏃 Atletismo (100m, 200m, 400m)
+- 🤸 Gimnasia
+- 🏓 Tenis de mesa
+- ♟️ Ajedrez
+
+## Grupos de Competencia
+
+- **Grupo A:** Grados 6° y 7°
+- **Grupo B:** Grados 8° y 9°
+- **Grupo C:** Grados 10° y 11°
+
+## Premiación
+
+Se entregarán medallas y trofeos a los tres primeros lugares de cada categoría. Además, se reconocerá al curso con mejor espíritu deportivo.
+
+### Valores Olímpicos
+
+Este evento promueve:
+- 🤝 Trabajo en equipo
+- 💪 Superación personal
+- 🎯 Disciplina
+- ⚖️ Juego limpio
+
+¡Ven a animar a tu curso y disfruta de una jornada deportiva inolvidable!
+EOF
+
+# Evento 3: Festival Cultural
+cat > _eventos/festival-cultural.md << 'EOF'
+---
+layout: evento
+title: "Festival Cultural Atanasiano"
+date: 2025-11-05
+time: "2:00 PM - 6:00 PM"
+location: "Auditorio Principal y Patios"
+organizer: "Área de Artes"
+image: "https://images.unsplash.com/photo-1514306191717-452ec28c7814?w=800"
+description: "Celebración de la diversidad cultural con música, danza y teatro"
+registro: "#"
+---
+
+El **Festival Cultural Atanasiano** es una celebración de la diversidad y el talento artístico de nuestra comunidad educativa.
+
+## Programa del Festival
+
+### 2:00 PM - Inauguración
+Palabras de bienvenida y presentación del himno nacional
+
+### 2:30 PM - Danzas Folclóricas
+- Cumbia colombiana
+- Bambuco
+- Joropo
+- Mapalé
+- Danzas de la región andina
+
+### 3:30 PM - Música en Vivo
+- Banda estudiantil
+- Coro institucional
+- Solistas de diferentes géneros
+- Grupo de rock estudiantil
+
+### 4:30 PM - Teatro
+- Obra: "Raíces de nuestra tierra"
+- Sketches cómicos
+- Monólogos
+
+### 5:30 PM - Exposiciones
+- Arte plástico estudiantil
+- Fotografía
+- Artesanías
+- Gastronomía regional
+
+## Participación Abierta
+
+Invitamos a padres de familia y comunidad en general a disfrutar de este hermoso evento cultural.
+
+**Entrada libre** - No te lo pierdas
+EOF
+
+# Evento 4: Graduación
+cat > _eventos/ceremonia-graduacion.md << 'EOF'
+---
+layout: evento
+title: "Ceremonia de Graduación Promoción 2025"
+date: 2025-11-25
+time: "5:00 PM"
+location: "Teatro Municipal"
+organizer: "Rectoría"
+image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800"
+description: "Ceremonia de grado para estudiantes de undécimo"
+---
+
+La **Ceremonia de Graduación 2025** es el momento más importante del año, donde despediremos a nuestros bachilleres que inician una nueva etapa de sus vidas.
+
+## Orden de la Ceremonia
+
+### 5:00 PM - Entrada de Graduandos
+Los estudiantes harán su entrada solemne al teatro acompañados de música
+
+### 5:15 PM - Acto Protocolario
+- Himno nacional
 - Himno institucional
+- Palabras del rector
+- Palabras del personero estudiantil
 
-**9:00 - 12:00 PM:** Primera ronda de presentaciones
-- Categoría: Ciencias Naturales
-- Categoría: Física y Química
-- Categoría: Matemáticas Aplicadas
+### 5:45 PM - Imposición de Becas
+Reconocimiento a los mejores bachilleres:
+- 🏆 Mejor ICFES
+- 📚 Mejor promedio académico
+- 🎭 Mejor en convivencia
+- 💡 Espíritu Atanasiano
 
-### Tarde (1:00 PM - 4:00 PM)
+### 6:15 PM - Entrega de Diplomas
+Cada graduando recibirá su diploma de bachiller
 
-**1:00 - 1:30 PM:** Almuerzo (incluido para participantes)
+### 7:00 PM - Juramento
+Los graduandos pronunciarán el juramento de compromiso con la sociedad
 
-**1:30 - 3:30 PM:** Segunda ronda de presentaciones
-- Categoría: Tecnología e Innovación
-- Categoría: Medio Ambiente
-- Categoría: Robótica
+### 7:15 PM - Acto Simbólico
+- Cambio de borla
+- Lanzamiento de birretes
+- Foto oficial de promoción
 
-**3:30 - 4:00 PM:** Ceremonia de premiación
-- Anuncio de ganadores
-- Entrega de reconocimientos
-- Palabras de cierre
+## Información Importante
 
-## 🏆 Categorías de Participación
+**Invitaciones:** Cada graduando tiene derecho a 4 invitaciones para familiares
 
-### 1. Ciencias Naturales
-Proyectos relacionados con biología, ecología, botánica y zoología.
+**Vestimenta:** Toga y birrete institucional (entregados previamente)
 
-### 2. Física y Química
-Experimentos y demostraciones de principios físicos y químicos.
+**Ensayos:** Los ensayos se realizarán los días 20, 22 y 24 de noviembre
 
-### 3. Matemáticas Aplicadas
-Modelos matemáticos, estadística y aplicaciones prácticas.
+¡Felicitaciones a la promoción 2025!
+EOF
 
-### 4. Tecnología e Innovación
-Desarrollo de aplicaciones, software y soluciones tecnológicas.
-
-### 5. Medio Ambiente
-Proyectos de sostenibilidad, reciclaje y cuidado ambiental.
-
-### 6. Robótica
-Construcción y programación de robots y sistemas automatizados.
-
-## 🎁 Premios y Reconocimientos
-
-Los proyectos destacados recibirán:
-
-- **Primer Lugar:** Medalla de oro, certificado y kit científico
-- **Segundo Lugar:** Medalla de plata, certificado y material educativo
-- **Tercer Lugar:** Medalla de bronce y certificado
-- **Menciones Especiales:** Por creatividad, innovación y presentación
-
-Además, los tres primeros puestos de cada categoría representarán a la institución en la **Feria Departamental de Ciencias**.
-
-## 👥 Requisitos de Participación
-
-Para participar en la feria, los estudiantes deben:
-
-1. Formar equipos de 2 a 4 integrantes
-2. Tener un docente asesor
-3. Registrar su proyecto antes del 10 de octubre
-4. Presentar un informe escrito de su investigación
-5. Preparar un stand o presentación visual
-6. Estar disponibles durante todo el evento
-
-## 📝 Criterios de Evaluación
-
-Los proyectos serán evaluados según:
-
-- **Originalidad e Innovación (25%):** ¿Qué tan original es la idea?
-- **Metodología Científica (25%):** ¿Siguió el método científico?
-- **Presentación (20%):** ¿Qué tan clara es la explicación?
-- **Aplicabilidad (15%):** ¿Tiene aplicaciones prácticas?
-- **Trabajo en Equipo (15%):** ¿Cómo trabajó el equipo?
-
-## 🌟 Jurados Invitados
-
-Contaremos con la presencia de:
-
-- **Dra. María Fernanda López** - Bióloga, Universidad de Antioquia
-- **Ing. Carlos Ramírez** - Ingeniero de Sistemas, empresa local
-- **Prof. Juan Gómez** - Docente de Física, colegio invitado
-- **Ing. Ana Martínez** - Ingeniera Ambiental
-
-## 📸 Cobertura del Evento
-
-El evento será cubierto por:
-
-- Equipo de comunicaciones de la institución
-- Medios locales de Girardota
-- Transmisión en vivo por nuestras redes sociales
-
-## 🎉 Actividades Complementarias
-
-Además de las presentaciones, habrá:
-
-- Talleres de robótica para visitantes
-- Demostraciones científicas interactivas
-- Zona de experimentos para niños
-- Stand de universidades locales
-- Refrigerios y zona de descanso
-
-## 💡 Consejos para los Participantes
-
-1. **Practica tu presentación** varias veces antes del evento
-2. **Prepara material visual** atractivo y claro
-3. **Anticipa preguntas** que puedan hacer los jurados
-4. **Llega temprano** para instalar tu stand
-5. **Mantén una actitud positiva** y profesional
-
-## 📞 Información de Contacto
-
-Para más información sobre la feria:
-
-- **Correo:** ciencias@ieatanasiogirardot.edu.co
-- **Teléfono:** (604) 123-4567
-- **Coordinador:** Prof. Luis Alberto Pérez
-
+# Evento 5: Día de la Familia
+cat > _eventos/dia-familia.md << 'EOF'
+---
+layout: evento
+title: "Día de la Familia Atanasiana"
+date: 2025-10-28
+time: "9:00 AM - 3:00 PM"
+location: "Instalaciones de la Institución"
+organizer: "Coordinación Académica"
+image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800"
+description: "Jornada de integración para estudiantes y familias"
 ---
 
-**¡No te pierdas esta oportunidad de mostrar tu talento científico!**
+El **Día de la Familia Atanasiana** es una jornada especial dedicada a fortalecer los lazos entre la institución y las familias de nuestros estudiantes.
 
-_"La ciencia es una forma de pensar mucho más que un cuerpo de conocimientos." - Carl Sagan_
+## Actividades del Día
+
+### 9:00 AM - Bienvenida
+Recepción de familias con refrigerio de bienvenida
+
+### 9:30 AM - Integración por Grupos
+
+**Primaria:**
+- 🎨 Talleres de arte familiar
+- 🎮 Juegos tradicionales
+- 📚 Cuentacuentos
+
+**Bachillerato:**
+- ⚽ Torneo padres vs hijos
+- 🎭 Actividades teatrales
+- 🧩 Dinámicas de integración
+
+### 12:00 PM - Almuerzo Compartido
+Cada familia trae un plato típico para compartir (tipo picnic)
+
+### 1:00 PM - Show de Talentos Familiar
+Presentaciones artísticas de familias que deseen participar
+
+### 2:30 PM - Cierre y Sorteos
+Rifa de premios y agradecimientos
+
+## Objetivos
+
+- 👨‍👩‍👧‍👦 Fortalecer vínculos familiares
+- 🤝 Integrar familia-escuela
+- 🎉 Crear momentos memorables
+- 💬 Espacio de diálogo y convivencia
+
+## ¿Qué traer?
+
+- Manta o cobija para sentarse
+- Plato de comida para compartir
+- Protección solar
+- Actitud positiva y ganas de divertirse
+
+¡Los esperamos para compartir un día inolvidable!
+EOF
+
+echo "✅ ¡5 eventos de ejemplo creados exitosamente!"
+echo ""
+echo "Archivos creados en _eventos/:"
+ls -la _eventos/
+echo ""
+echo "Ahora ejecuta:"
+echo "  bundle exec jekyll serve"
+echo ""
+echo "Y visita: http://localhost:4000/notiatanasiano/"
