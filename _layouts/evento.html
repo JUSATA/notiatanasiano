@@ -17,15 +17,21 @@ layout: default
         
         <div class="evento-meta">
           {% if page.location %}
-          <span class="meta-item">📍 {{ page.location }}</span>
+          <span class="meta-item">
+            📍 {{ page.location }}
+          </span>
           {% endif %}
           
           {% if page.time %}
-          <span class="meta-item">🕐 {{ page.time }}</span>
+          <span class="meta-item">
+            🕐 {{ page.time }}
+          </span>
           {% endif %}
           
           {% if page.organizer %}
-          <span class="meta-item">👤 {{ page.organizer }}</span>
+          <span class="meta-item">
+            👤 {{ page.organizer }}
+          </span>
           {% endif %}
         </div>
       </div>
@@ -60,3 +66,219 @@ layout: default
     </div>
   </div>
 </article>
+
+<style>
+.evento-single {
+  padding: 60px 20px;
+}
+
+.evento-header {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 40px;
+  margin-bottom: 50px;
+  align-items: start;
+}
+
+.evento-date-large {
+  background: linear-gradient(135deg, var(--secondary-red), #a00d26);
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 10px 30px rgba(200, 16, 46, 0.3);
+  position: sticky;
+  top: 100px;
+}
+
+.evento-date-large .day {
+  display: block;
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.evento-date-large .month {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+.evento-date-large .year {
+  display: block;
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-top: 5px;
+}
+
+.evento-badge {
+  display: inline-block;
+  background: var(--primary-green);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.evento-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+
+.evento-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.meta-item {
+  color: #666;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.evento-image-main {
+  margin-bottom: 60px;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+}
+
+.evento-image-main img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.evento-content {
+  max-width: 900px;
+  margin: 0 auto 60px;
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: #333;
+}
+
+.evento-content h2,
+.evento-content h3 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: var(--primary-green);
+}
+
+.evento-content ul,
+.evento-content ol {
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+.evento-content li {
+  margin-bottom: 10px;
+}
+
+.evento-registro {
+  max-width: 800px;
+  margin: 60px auto;
+}
+
+.registro-card {
+  background: linear-gradient(135deg, var(--primary-green), #1e5f42);
+  border-radius: 30px;
+  padding: 50px 40px;
+  text-align: center;
+  box-shadow: 0 15px 50px rgba(45, 134, 89, 0.3);
+}
+
+.registro-card h3 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.registro-card p {
+  color: rgba(255,255,255,0.95);
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.btn-registro {
+  display: inline-block;
+  padding: 18px 45px;
+  background: white;
+  color: var(--primary-green);
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.btn-registro:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.3);
+}
+
+.back-to-eventos {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.btn-back {
+  display: inline-block;
+  padding: 15px 40px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn-back:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 35px rgba(102, 126, 234, 0.4);
+}
+
+@media (max-width: 768px) {
+  .evento-header {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .evento-date-large {
+    position: static;
+    max-width: 150px;
+    margin: 0 auto;
+  }
+  
+  .evento-title {
+    font-size: 2.5rem;
+  }
+  
+  .evento-meta {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .evento-content {
+    font-size: 1rem;
+  }
+  
+  .registro-card {
+    padding: 40px 25px;
+  }
+  
+  .registro-card h3 {
+    font-size: 2rem;
+  }
+}
+</style>
