@@ -207,11 +207,10 @@ permalink: /eventos/
 <div class="container">
   
 <header class="page-header" data-aos="fade-down">
-    <h1 class="page-title">
-    <span class="icon">📅</span>
-    Eventos
-    </h1>
-    <p class="page-subtitle">Momentos memorables de nuestra comunidad educativa</p>
+ 
+<span class="icon">📅</span>
+Eventos
+<p class="page-subtitle">Momentos memorables de nuestra comunidad educativa</p>
 </header>
 
 
