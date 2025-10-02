@@ -10,15 +10,6 @@ permalink: /eventos/
     text-align: center;
 }
 
-.page-header h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, #c8102e, #667eea);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
 .page-header p {
     font-size: clamp(1rem, 2vw, 1.2rem);
     color: #666;
