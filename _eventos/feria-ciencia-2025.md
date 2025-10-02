@@ -16,5 +16,5 @@ La **Feria de la Ciencia 2025** es el evento más esperado del año, donde nuest
 - 🔬 **Biología:** Ecosistemas y biodiversidad
 - ⚗️ **Química:** Reacciones y compuestos
 - ⚡ **Física:** Energía y movimiento
-- 💻 **Tecnología:** Robótica e innovación
+- 💻 **Tecnología:** Desarrollo de programas y proyectos de innovación
 ---
