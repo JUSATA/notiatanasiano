@@ -6,7 +6,7 @@ permalink: /noticias/
 
 <section class="page-header">
   <div class="container">
-    <h1 class="page-title">Últimas Noticias</h1>
+    <h1 class="page-title"><span class="icon">📰</span>Últimas Noticias</h1>
     <p class="page-subtitle">Novedades y comunicados de la institución</p>
   </div>
 </section>
