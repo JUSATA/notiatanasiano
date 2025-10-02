@@ -205,13 +205,14 @@ permalink: /eventos/
 </style>
 
 <div class="container">
-  
-<header class="" data-aos="fade-down">
  
-
-<center><h1><span class="icon">📅</span>Eventos</h1>
-<p class="page-subtitle">Momentos memorables de nuestra comunidad educativa</p></center>
-</header>
+<section class="page-header">
+  <div class="container">
+  <span class="icon">📅</span>
+    <h1 class="page-title">Eventos</h1>
+    <p class="page-subtitle">Cronograma Institucional</p>
+  </div>
+</section>
 
 
   <section class="eventos-list">
