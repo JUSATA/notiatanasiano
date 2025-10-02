@@ -1,20 +1,9 @@
 ---
 layout: noticia
-title: "Celebración del Día del Maestro"
-date: 2025-09-30
-category: "Eventos"
-author: "Comunicaciones"
-image: "/assets/images/noticias/maestros.jpg"
-excerpt: "Una emotiva celebración para honrar a nuestros docentes"
-tags: [maestros, celebración, reconocimiento]
-destacado: true
-permalink: /noticias/celebracion-dia-del-maestro/
+title: "Inauguración del Nuevo Laboratorio de Ciencias"
+date: 2025-09-29
+author: "Redacción"
+category: "Institucional"
+image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800"
+excerpt: "La Institución Educativa Atanasio Girardot inaugura su nuevo laboratorio de ciencias equipado con tecnología de última generación."
 ---
-
-La **Institución Educativa Atanasio Girardot** vivió un día especial al conmemorar el Día del Maestro con una serie de actividades diseñadas para reconocer la invaluable labor de nuestros docentes.
-
-## Una Mañana de Reconocimientos
-
-La jornada inició a las 8:00 AM en el auditorio principal, donde la comunidad educativa se congregó para rendir un emotivo homenaje a quienes día a día forjan el futuro de nuestra juventud.
-
-<!-- resto del contenido... -->
