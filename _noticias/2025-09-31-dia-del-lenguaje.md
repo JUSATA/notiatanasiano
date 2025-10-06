@@ -4,6 +4,13 @@ title: "Celebración del Día del lenguaje"
 date: 2025-09-30
 category: "Eventos"
 author: "Comunicaciones"
+galeria:
+  - "/notiatanasiano/assets/images/noticias/maestros.jpg"
+  - "/notiatanasiano/assets/images/noticias/maestros.jpg"
+  - "/notiatanasiano/assets/images/noticias/maestros.jpg"
+  - "/notiatanasiano/assets/images/noticias/maestros.jpg"
+  - "/notiatanasiano/assets/images/noticias/maestros.jpg"
+  - "/notiatanasiano/assets/images/noticias/maestros.jpg"
 image: "https://jusata.github.io/notiatanasiano//assets/images/noticias/maestros.jpg"
 excerpt: "Una emotiva celebración para honrar a nuestros docentes"
 tags: [maestros, celebración, reconocimiento]
