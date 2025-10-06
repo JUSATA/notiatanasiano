@@ -5,7 +5,7 @@ date: 2025-09-30
 category: "Eventos"
 author: "Comunicaciones"
 galeria:
-  - "https://jusata.github.io/notiatanasiano//assets/images/noticias/maestros.jpg"
+  - "https://photos.google.com/u/1/photo/AF1QipORGfhJGkksuJwD9WugHCki6CVp6kIVFJ2eqIV_?hl=es-419"
   - "https://jusata.github.io/notiatanasiano//assets/images/noticias/maestros.jpg"
   - "https://jusata.github.io/notiatanasiano//assets/images/noticias/maestros.jpg"
   - "https://jusata.github.io/notiatanasiano//assets/images/noticias/maestros.jpg"
