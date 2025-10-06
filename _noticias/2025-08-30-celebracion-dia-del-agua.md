@@ -18,7 +18,7 @@ destacado: true
 reading_time: 4
 ---
 
-La **Institución Educativa Atanasio Girardot** vivió un día especial al conmemorar el Día del Maestro con una serie de actividades diseñadas para reconocer la invaluable labor de nuestros docentes.
+La **Institución Educativa Atanasio Girardota** vivió un día especial al conmemorar el Día del Maestro con una serie de actividades diseñadas para reconocer la invaluable labor de nuestros docentes.
 
 ## Una Mañana de Reconocimientos
 
