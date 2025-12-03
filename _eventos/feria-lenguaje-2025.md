@@ -6,7 +6,7 @@ date: 2026-04-04
 time: "8:00 AM - 4:00 PM"
 location: "Biblioteca"
 organizer: "Departamento de Ciencias"
-image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ-kCIBZXhAUV3Oxw2oIP2ObADFLpAsIZ9zg&s"
+image: "https://jusata.github.io/notiatanasiano/assets/images/eventos/feria-ciencias.jpg"
 description: "Muestra de proyectos orientados al lenguaje"
 ---
 
