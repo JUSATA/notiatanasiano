@@ -1,7 +1,7 @@
 ---
 layout: evento
 title: "Feria del lenguaje"
-date: 2025-12-15
+date: 2026-12-15
 time: "8:00 AM - 4:00 PM"
 location: "Auditorio Principal"
 organizer: "Departamento de Ciencias"
