@@ -2,7 +2,7 @@
 ---
 layout: evento
 title: "Feria del Lenguaje"
-date: 2025-08-15
+date: 2026-04-04
 time: "8:00 AM - 4:00 PM"
 location: "Biblioteca"
 organizer: "Departamento de Ciencias"
