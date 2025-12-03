@@ -1,13 +1,12 @@
-
 ---
 layout: evento
-title: "Feria del Lenguaje"
-date: 2026-04-04
+title: "Feria del lenguaje"
+date: 2025-12-15
 time: "8:00 AM - 4:00 PM"
-location: "Biblioteca"
+location: "Auditorio Principal"
 organizer: "Departamento de Ciencias"
 image: "https://jusata.github.io/notiatanasiano/assets/images/eventos/feria-ciencias.jpg"
-description: "Muestra de proyectos orientados al lenguaje"
+description: "evento que reúne a empresas, estudiantes y público general para exhibir y conocer los últimos avances, productos y tendencias en tecnología"
 ---
 
 La **Feria de la Ciencia 2025** es el evento más esperado del año, donde nuestros estudiantes presentan sus proyectos de investigación científica.
